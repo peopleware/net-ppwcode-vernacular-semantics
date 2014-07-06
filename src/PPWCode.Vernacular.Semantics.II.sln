@@ -3,13 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{788185DD-7404-47DF-AFF3-698298A6F934}"
 	ProjectSection(SolutionItems) = preProject
+		..\LICENSE = ..\LICENSE
+		..\NOTICE = ..\NOTICE
 		II\PPWCode.Vernacular.Semantics.II.nuspec = II\PPWCode.Vernacular.Semantics.II.nuspec
+		..\README.md = ..\README.md
 		Solution Items\SolutionInfo.cs = Solution Items\SolutionInfo.cs
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPWCode.Vernacular.Semantics.II", "II\PPWCode.Vernacular.Semantics.II.csproj", "{DC2E40D4-0756-41CC-A77E-A03806991238}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPWCode.Vernacular.Semantics.Test.II", "Test_II\PPWCode.Vernacular.Semantics.Test.II.csproj", "{7200287D-1E31-4C53-B24F-602A35614B6A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "psake", "psake", "{90949B3E-8AD7-4771-856E-47D86A5FAD33}"
+	ProjectSection(SolutionItems) = preProject
+		..\default.ps1 = ..\default.ps1
+		..\init-psake.ps1 = ..\init-psake.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A6761240-4B43-4BC7-89E1-387D811B4D37}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution

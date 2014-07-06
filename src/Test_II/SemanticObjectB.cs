@@ -1,26 +1,21 @@
-﻿/*
- * Copyright 2004 - $Date: 2008-11-15 23:58:07 +0100 (za, 15 nov 2008) $ by PeopleWare n.v..
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-#region Using
+﻿// Copyright 2014 by PeopleWare n.v..
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
-using PPWCode.Vernacular.Semantics.II;
 
-#endregion
+using PPWCode.Vernacular.Semantics.II;
 
 namespace PPWCode.Vernacular.Semantics.Test.II
 {
@@ -46,10 +41,8 @@ namespace PPWCode.Vernacular.Semantics.Test.II
 
         public int IntProperty
         {
-            get
-            {
-                return m_IntProperty;
-            }
+            get { return m_IntProperty; }
+
             set
             {
                 if (m_IntProperty != value)
@@ -64,10 +57,8 @@ namespace PPWCode.Vernacular.Semantics.Test.II
 
         public string StringProperty
         {
-            get
-            {
-                return m_StringProperty;
-            }
+            get { return m_StringProperty; }
+
             set
             {
                 if (m_StringProperty != value)
@@ -82,20 +73,19 @@ namespace PPWCode.Vernacular.Semantics.Test.II
 
         public SemanticObjectA A
         {
-            get
-            {
-                return m_A;
-            }
+            get { return m_A; }
+
             set
             {
                 Contract.Ensures(Contract.OldValue(A) != null && Contract.OldValue(A) != value
-                                     ? ! Contract.OldValue(A).Bs.Contains(this) : true);
+                                     ? !Contract.OldValue(A).Bs.Contains(this) : true);
                 Contract.Ensures(A == value);
 
                 if (m_A != null)
                 {
                     m_A.RemoveB(this);
                 }
+
                 m_A = value;
                 if (m_A != null)
                 {
@@ -108,10 +98,7 @@ namespace PPWCode.Vernacular.Semantics.Test.II
 
         public IList<SemanticObjectC> Cs
         {
-            get
-            {
-                return new List<SemanticObjectC>(m_Cs);
-            }
+            get { return new List<SemanticObjectC>(m_Cs); }
         }
 
         internal void AddC(SemanticObjectC c)

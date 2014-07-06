@@ -1,41 +1,34 @@
-﻿/*
- * Copyright 2004 - $Date: 2008-11-15 23:58:07 +0100 (za, 15 nov 2008) $ by PeopleWare n.v..
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-#region Using
+﻿// Copyright 2014 by PeopleWare n.v..
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using System;
 using System.Diagnostics.Contracts;
 using System.Runtime.Serialization;
-using PPWCode.Vernacular.Exceptions.II;
 
-#endregion
+using PPWCode.Vernacular.Exceptions.II;
 
 namespace PPWCode.Vernacular.Semantics.II
 {
     /// <summary>
-    /// Abstract class that supports things
-    /// required by <see cref="IRousseauObject"/>.
+    ///     Abstract class that supports things
+    ///     required by <see cref="IRousseauObject" />.
     /// </summary>
     [Serializable, DataContract(IsReference = true)]
     public class AbstractRousseauObject :
         AbstractSemanticObject,
         IRousseauObject
     {
-        #region IRousseauObject Members
-
         [Pure]
         public bool IsCivilized()
         {
@@ -43,17 +36,19 @@ namespace PPWCode.Vernacular.Semantics.II
         }
 
         /// <summary>
-        /// <inheritdoc cref="IRousseauObject.WildExceptions"/>
-        /// Default implementation.
+        ///     <inheritdoc cref="IRousseauObject.WildExceptions" />
+        ///     Default implementation.
         /// </summary>
-        /// <returns>An empty, unclosed
-        /// <see cref="CompoundSemanticException"/>. This is not a postcondition
-        /// that is demanded of subclasses. It is intended as a helper functionality
-        /// for subclasses.</returns>
+        /// <returns>
+        ///     An empty, unclosed
+        ///     <see cref="CompoundSemanticException" />. This is not a post condition
+        ///     that is demanded of subclasses. It is intended as a helper functionality
+        ///     for subclasses.
+        /// </returns>
         /// <remarks>
-        /// Subclasses that override this method should use the following
-        /// pattern:
-        /// <code>
+        ///     Subclasses that override this method should use the following
+        ///     pattern:
+        ///     <code>
         /// [Pure]
         /// public override CompoundSemanticException WildExceptions()
         /// {
@@ -75,7 +70,7 @@ namespace PPWCode.Vernacular.Semantics.II
         }
 
         /// <summary>
-        /// <inheritdoc cref="IRousseauObject.ThrowIfNotCivilized"/>
+        ///     <inheritdoc cref="IRousseauObject.ThrowIfNotCivilized" />
         /// </summary>
         [Pure]
         public void ThrowIfNotCivilized()
@@ -88,7 +83,5 @@ namespace PPWCode.Vernacular.Semantics.II
                 throw cse;
             }
         }
-
-        #endregion
     }
 }
