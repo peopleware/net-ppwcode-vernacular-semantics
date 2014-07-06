@@ -1,24 +1,24 @@
-﻿/*
- * Copyright 2004 - $Date: 2008-11-15 23:58:07 +0100 (za, 15 nov 2008) $ by PeopleWare n.v..
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+﻿// Copyright 2014 by PeopleWare n.v..
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+
 using NUnit.Framework;
+
 using PPWCode.Vernacular.Semantics.II;
 
 namespace PPWCode.Vernacular.Semantics.Test.II
@@ -27,15 +27,15 @@ namespace PPWCode.Vernacular.Semantics.Test.II
     public class AbstractSemanticObjectTest
     {
         /// <summary>
-        /// Gets or sets the test context which provides
-        /// information about and functionality for the current test run.
+        ///     Gets or sets the test context which provides
+        ///     information about and functionality for the current test run.
         /// </summary>
         public TestContext TestContext { get; set; }
 
         private static readonly string[] s_SomeStrings = new[]
-        {
-            "A string", "another string", string.Empty, null, "You name here"
-        };
+                                                         {
+                                                             "A string", "another string", string.Empty, null, "You name here"
+                                                         };
 
         public AbstractSemanticObject[] BuildBs()
         {
@@ -45,18 +45,18 @@ namespace PPWCode.Vernacular.Semantics.Test.II
             for (int i = 0; i < 5; i++)
             {
                 SemanticObjectB b = new SemanticObjectB
-                {
-                    IntProperty = i,
-                    StringProperty = s_SomeStrings[i]
-                };
+                                    {
+                                        IntProperty = i,
+                                        StringProperty = s_SomeStrings[i]
+                                    };
 
                 for (int j = 0; j < 10; j++)
                 {
                     SemanticObjectC c = new SemanticObjectC
-                    {
-                        B = b,
-                        A = a
-                    };
+                                        {
+                                            B = b,
+                                            A = a
+                                        };
                     lastC = c;
                 }
 
@@ -81,10 +81,10 @@ namespace PPWCode.Vernacular.Semantics.Test.II
         public void DelegateMethod(object obj, PropertyChangedEventArgs pceArgs)
         {
             m_DelegateMethodeCalled = new CallMock
-            {
-                Obj = obj,
-                PceArgs = pceArgs
-            };
+                                      {
+                                          Obj = obj,
+                                          PceArgs = pceArgs
+                                      };
         }
 
         [Test]
@@ -184,12 +184,15 @@ namespace PPWCode.Vernacular.Semantics.Test.II
         public void CreateAbstractSemanticObject()
         {
             AbstractSemanticObject result = new SemanticObjectB();
+            Assert.IsNotNull(result);
             result = new SemanticObjectA();
+            Assert.IsNotNull(result);
             result = new SemanticObjectC();
+            Assert.IsNotNull(result);
         }
 
         /// <summary>
-        /// A test for the Equals method.
+        ///     A test for the Equals method.
         /// </summary>
         [Test]
         public void EqualsTest()
@@ -199,16 +202,19 @@ namespace PPWCode.Vernacular.Semantics.Test.II
             SemanticObjectB aBasB = (SemanticObjectB)aB;
             all.Add(aBasB.A);
             all.AddRange(aBasB.Cs.Cast<AbstractSemanticObject>());
-            bool result;
+            bool result = false;
             foreach (AbstractSemanticObject aso1 in all)
             {
                 foreach (AbstractSemanticObject aso2 in all)
                 {
                     result = aso1.Equals(aso2);
+                    Assert.AreEqual(result, result);
                 }
 
                 result = aso1.Equals(null);
             }
+
+            Assert.AreEqual(result, result);
         }
     }
 }
