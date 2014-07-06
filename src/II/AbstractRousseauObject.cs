@@ -14,14 +14,10 @@
  * limitations under the License.
  */
 
-#region Using
-
 using System;
 using System.Diagnostics.Contracts;
 using System.Runtime.Serialization;
 using PPWCode.Vernacular.Exceptions.II;
-
-#endregion
 
 namespace PPWCode.Vernacular.Semantics.II
 {
@@ -34,8 +30,6 @@ namespace PPWCode.Vernacular.Semantics.II
         AbstractSemanticObject,
         IRousseauObject
     {
-        #region IRousseauObject Members
-
         [Pure]
         public bool IsCivilized()
         {
@@ -47,7 +41,7 @@ namespace PPWCode.Vernacular.Semantics.II
         /// Default implementation.
         /// </summary>
         /// <returns>An empty, unclosed
-        /// <see cref="CompoundSemanticException"/>. This is not a postcondition
+        /// <see cref="CompoundSemanticException"/>. This is not a post condition
         /// that is demanded of subclasses. It is intended as a helper functionality
         /// for subclasses.</returns>
         /// <remarks>
@@ -88,7 +82,5 @@ namespace PPWCode.Vernacular.Semantics.II
                 throw cse;
             }
         }
-
-        #endregion
     }
 }

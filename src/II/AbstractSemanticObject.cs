@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-#region Using
-
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -23,8 +21,6 @@ using System.Diagnostics.Contracts;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
-
-#endregion
 
 namespace PPWCode.Vernacular.Semantics.II
 {
@@ -36,8 +32,6 @@ namespace PPWCode.Vernacular.Semantics.II
     public abstract class AbstractSemanticObject :
         ISemanticObject
     {
-        #region Contructor
-
         protected AbstractSemanticObject()
         {
             // ReSharper disable DoNotCallOverridableMethodsInConstructor
@@ -45,22 +39,15 @@ namespace PPWCode.Vernacular.Semantics.II
             // ReSharper restore DoNotCallOverridableMethodsInConstructor
         }
 
-        #endregion
-
-        #region Initializer
-
         protected virtual void Initialize(bool onDeserializing)
         {
             m_IsSerialized = onDeserializing;
         }
 
-        #endregion
-
-        #region INotifyPropertyChanged
-
         /// <summary>
-        /// Triggers the PropertyChangedevent if this event is assigned
+        /// Triggers the <see cref="PropertyChanged"/> event if this event is assigned.
         /// </summary>
+        /// <param name="propertyName">The property name.</param>
         protected virtual void OnPropertyChanged(string propertyName)
         {
             Contract.Requires(!string.IsNullOrEmpty(propertyName));
@@ -77,10 +64,6 @@ namespace PPWCode.Vernacular.Semantics.II
         /// Is raised whenever a property is changed, part of the INotifyPropertyChanged interface.
         /// </summary>
         public virtual event PropertyChangedEventHandler PropertyChanged;
-
-        #endregion
-
-        #region ISemanticObject
 
         public override sealed bool Equals(object obj)
         {
@@ -103,6 +86,7 @@ namespace PPWCode.Vernacular.Semantics.II
                 {
                     sb.AppendFormat(", {0} = ", prop.Name);
                     object value;
+
                     try
                     {
                         value = prop.GetValue(this, null);
@@ -111,6 +95,7 @@ namespace PPWCode.Vernacular.Semantics.II
                     {
                         value = e.GetBaseException().Message;
                     }
+
                     if (value == null)
                     {
                         sb.Append("[null]");
@@ -139,8 +124,10 @@ namespace PPWCode.Vernacular.Semantics.II
                         sb.AppendFormat("'{0}'", value);
                     }
                 }
+
                 sb.Append(" }");
             }
+
             return sb.ToString();
         }
 
@@ -148,6 +135,8 @@ namespace PPWCode.Vernacular.Semantics.II
         /// This method returns a limited string representation
         /// of this object, intended for debugging purposes.
         /// </summary>
+        /// <returns>String representation of the object intended for 
+        /// debugging.</returns>
         /// <remarks>
         /// <para>The method is used in <see cref="ToString"/>,
         /// when this refers to other <c>AbstractSemanticObject</c>
@@ -156,7 +145,7 @@ namespace PPWCode.Vernacular.Semantics.II
         /// not include representations of other objects, but only
         /// a representation of the type and the <see cref="GetHashCode"/>.</para>
         /// <para>Subclasses can override this method to return
-        /// a simple string representation that better indentifies this
+        /// a simple string representation that better identifies this
         /// object.</para>
         /// </remarks>
         public virtual string LimitedToString()
@@ -175,16 +164,10 @@ namespace PPWCode.Vernacular.Semantics.II
             get { return m_IsSerialized; }
         }
 
-        #endregion
-
-        #region Serialization
-
         [OnDeserializing]
         private void OnDeserializing(StreamingContext context)
         {
             Initialize(true);
         }
-
-        #endregion
     }
 }

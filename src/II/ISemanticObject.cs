@@ -14,12 +14,8 @@
  * limitations under the License.
  */
 
-#region Using
-
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
-
-#endregion
 
 namespace PPWCode.Vernacular.Semantics.II
 {
@@ -34,7 +30,7 @@ namespace PPWCode.Vernacular.Semantics.II
     /// <para>Furthermore, in an ideal world, to keep things under control, there should
     /// be exactly <strong>1</strong> computer object for each relevant real-world object
     /// (abstraction function should be a surjection). Duplicate representatives of
-    /// real-world objects make things very hard. Sadly, in very many cicrumstances,
+    /// real-world objects make things very hard. Sadly, in very many circumstances,
     /// we cannot do without multiple representatives. In any case, to guard
     /// against accidental copy proliferation, semantic objects are non-cloneable.</para>
     /// <para>Note that, as a consequence of the above, reference identity nor
@@ -66,42 +62,46 @@ namespace PPWCode.Vernacular.Semantics.II
         /// <summary>
         /// Override to make sealed.
         /// </summary>
+        /// <param name="other">The object to compare with.</param>
+        /// <returns>A boolean indicating whether this object
+        /// is equal to the <paramref name="other"/> object.</returns>
         [Pure]
         bool Equals(object other);
 
         /// <summary>
         /// Override to make sealed.
         /// </summary>
+        /// <returns>The hash code for this object.</returns>
         [Pure]
         int GetHashCode();
 
         /// <summary>
         /// Override to return a string representation intended for debugging and logging.
         /// </summary>
-        /// <returns>
+        /// <remarks>
         /// <strong>Never</strong> try to print out a representation of objects reached
         /// via a to-many association.
         /// Otherwise you'll get infinite loops.
         /// You can show the number of elements in an association.
-        /// </returns>
+        /// </remarks>
+        /// <returns>A string representation of this object.</returns>
         [Pure]
         string ToString();
 
         /// <summary>
-        /// Did this object go through a serialization-deserialization cycle?
+        /// Indicates whether this object went through a serialization-deserialization cycle.
         /// </summary>
         [Pure]
         bool IsSerialized { get; }
     }
 
-    // ReSharper disable InconsistentNaming
+    /// <summary>The Contract class for <see cref="ISemanticObject"/>.</summary>
     /// <exclude />
     [ContractClassFor(typeof(ISemanticObject))]
+    // ReSharper disable InconsistentNaming
     public abstract class ISemanticObjectContracts :
         ISemanticObject
     {
-        #region ISemanticObject Members
-
         bool ISemanticObject.Equals(object other)
         {
             Contract.Ensures(Contract.Result<bool>() == ReferenceEquals(this, other));
@@ -122,16 +122,10 @@ namespace PPWCode.Vernacular.Semantics.II
             }
         }
 
-        #endregion
-
-        #region INotifyPropertyChanged Members
-
 #pragma warning disable
 
         public event PropertyChangedEventHandler PropertyChanged;
 
 #pragma warning restore
-
-        #endregion
     }
 }

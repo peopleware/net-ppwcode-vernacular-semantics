@@ -14,13 +14,9 @@
  * limitations under the License.
  */
 
-#region Using
-
 using System.Diagnostics.Contracts;
 using PPWCode.Vernacular.Exceptions.II;
 using PPWCode.Vernacular.Semantics.II;
-
-#endregion
 
 namespace PPWCode.Vernacular.Semantics.Test.II
 {
@@ -44,6 +40,7 @@ namespace PPWCode.Vernacular.Semantics.Test.II
             {
                 cpe.AddElement(new SemanticException("TEST"));
             }
+
             return cpe;
         }
     }

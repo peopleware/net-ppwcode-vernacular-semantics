@@ -14,13 +14,9 @@
  * limitations under the License.
  */
 
-#region Using
-
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
 using PPWCode.Vernacular.Exceptions.II;
-
-#endregion
 
 namespace PPWCode.Vernacular.Semantics.II
 {
@@ -72,6 +68,8 @@ namespace PPWCode.Vernacular.Semantics.II
         /// returns an <see cref="CompoundSemanticException.IsEmpty"/>
         /// exception.
         /// </summary>
+        /// <returns>A boolean indicating whether this object is 
+        /// civilized.</returns>
         [Pure]
         bool IsCivilized();
 
@@ -107,14 +105,14 @@ namespace PPWCode.Vernacular.Semantics.II
         void ThrowIfNotCivilized();
     }
 
-    // ReSharper disable InconsistentNaming
+    /// <summary>Contract class for <see cref="IRousseauObject"/> interface.
+    /// </summary>
     /// <exclude />
     [ContractClassFor(typeof(IRousseauObject))]
+    // ReSharper disable once InconsistentNaming
     public abstract class IRousseauObjectContracts :
         IRousseauObject
     {
-        #region IRousseauObject Members
-
         [Pure]
         public bool IsCivilized()
         {
@@ -139,23 +137,17 @@ namespace PPWCode.Vernacular.Semantics.II
                 "Method must end nominally if this is civilized, " +
                 "and is not allowed to end nominally if this is not.");
             Contract.EnsuresOnThrow<CompoundSemanticException>(
-                ! IsCivilized(),
+                !IsCivilized(),
                 "If this method throws a CompoundSemanticException, this" +
                 "was and is not civilized.");
         }
 
         public abstract bool IsSerialized { get; }
 
-        #endregion
-
-        #region INotifyPropertyChanged Members
-
 #pragma warning disable
 
         public event PropertyChangedEventHandler PropertyChanged;
 
 #pragma warning restore
-
-        #endregion
     }
 }

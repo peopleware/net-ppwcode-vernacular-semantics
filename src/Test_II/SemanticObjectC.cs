@@ -14,12 +14,8 @@
  * limitations under the License.
  */
 
-#region Using
-
 using System.Diagnostics.Contracts;
 using PPWCode.Vernacular.Semantics.II;
-
-#endregion
 
 namespace PPWCode.Vernacular.Semantics.Test.II
 {
@@ -44,16 +40,18 @@ namespace PPWCode.Vernacular.Semantics.Test.II
             {
                 return m_B;
             }
+
             set
             {
                 Contract.Ensures(Contract.OldValue(B) != null && Contract.OldValue(B) != value
-                                     ? ! Contract.OldValue(B).Cs.Contains(this) : true);
+                                     ? !Contract.OldValue(B).Cs.Contains(this) : true);
                 Contract.Ensures(B == value);
 
                 if (m_B != null)
                 {
                     m_B.RemoveC(this);
                 }
+
                 m_B = value;
                 if (m_B != null)
                 {

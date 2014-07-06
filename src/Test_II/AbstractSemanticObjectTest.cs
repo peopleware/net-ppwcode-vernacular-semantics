@@ -14,16 +14,12 @@
  * limitations under the License.
  */
 
-#region Using
-
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using NUnit.Framework;
 using PPWCode.Vernacular.Semantics.II;
-
-#endregion
 
 namespace PPWCode.Vernacular.Semantics.Test.II
 {
@@ -53,6 +49,7 @@ namespace PPWCode.Vernacular.Semantics.Test.II
                     IntProperty = i,
                     StringProperty = s_SomeStrings[i]
                 };
+
                 for (int j = 0; j < 10; j++)
                 {
                     SemanticObjectC c = new SemanticObjectC
@@ -62,9 +59,11 @@ namespace PPWCode.Vernacular.Semantics.Test.II
                     };
                     lastC = c;
                 }
+
                 b.A = a;
                 result[i] = b;
             }
+
             // this creates a loop, as it is downstream, but not a collection
             a.C = lastC;
             return result;
@@ -72,8 +71,9 @@ namespace PPWCode.Vernacular.Semantics.Test.II
 
         public class CallMock
         {
-            public object Obj;
-            public PropertyChangedEventArgs PceArgs;
+            public object Obj { get; set; }
+
+            public PropertyChangedEventArgs PceArgs { get; set; }
         }
 
         private CallMock m_DelegateMethodeCalled;
@@ -131,6 +131,7 @@ namespace PPWCode.Vernacular.Semantics.Test.II
                     result = c.ToString();
                     Trace.WriteLine(result);
                 }
+
                 Trace.Flush();
             }
         }
@@ -150,6 +151,7 @@ namespace PPWCode.Vernacular.Semantics.Test.II
                     {
                         b.IntProperty = i;
                     }
+
                     Assert.IsNotNull(m_DelegateMethodeCalled);
                     Assert.AreEqual(b, m_DelegateMethodeCalled.Obj);
                     Assert.IsNotNull(m_DelegateMethodeCalled.PceArgs);
@@ -159,6 +161,7 @@ namespace PPWCode.Vernacular.Semantics.Test.II
                     {
                         b.StringProperty = s;
                     }
+
                     Assert.IsNotNull(m_DelegateMethodeCalled);
                     Assert.AreEqual(b, m_DelegateMethodeCalled.Obj);
                     Assert.IsNotNull(m_DelegateMethodeCalled.PceArgs);
@@ -186,7 +189,7 @@ namespace PPWCode.Vernacular.Semantics.Test.II
         }
 
         /// <summary>
-        /// A test for Equals
+        /// A test for the Equals method.
         /// </summary>
         [Test]
         public void EqualsTest()
@@ -203,6 +206,7 @@ namespace PPWCode.Vernacular.Semantics.Test.II
                 {
                     result = aso1.Equals(aso2);
                 }
+
                 result = aso1.Equals(null);
             }
         }

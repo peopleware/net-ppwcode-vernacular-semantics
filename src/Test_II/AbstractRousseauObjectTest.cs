@@ -14,13 +14,9 @@
  * limitations under the License.
  */
 
-#region Using
-
 using NUnit.Framework;
 using PPWCode.Vernacular.Exceptions.II;
 using PPWCode.Vernacular.Semantics.II;
-
-#endregion
 
 namespace PPWCode.Vernacular.Semantics.Test.II
 {
@@ -65,7 +61,7 @@ namespace PPWCode.Vernacular.Semantics.Test.II
         }
 
         /// <summary>
-        /// A test for ThrowIfNotCivilized
+        /// A test for ThrowIfNotCivilized.
         /// </summary>
         [Test]
         public void ThrowIfNotCivilizedTest()
@@ -93,7 +89,7 @@ namespace PPWCode.Vernacular.Semantics.Test.II
         }
 
         /// <summary>
-        /// A test for AbstractRousseauObject Constructor
+        /// A test for AbstractRousseauObject Constructor.
         /// </summary>
         [Test]
         public void AbstractRousseauObjectConstructorTest()

@@ -14,13 +14,9 @@
  * limitations under the License.
  */
 
-#region Using
-
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using PPWCode.Vernacular.Semantics.II;
-
-#endregion
 
 namespace PPWCode.Vernacular.Semantics.Test.II
 {
@@ -62,14 +58,14 @@ namespace PPWCode.Vernacular.Semantics.Test.II
 
         internal void RemoveB(SemanticObjectB b)
         {
-            Contract.Ensures(! Bs.Contains(b));
+            Contract.Ensures(!Bs.Contains(b));
 
             m_Bs.Remove(b);
         }
 
         /// <summary>
         /// Closing the loop.
-        /// This could create a loop, as it is downstream, but not a collection
+        /// This could create a loop, as it is downstream, but not a collection.
         /// </summary>
         public SemanticObjectC C { get; set; }
     }
