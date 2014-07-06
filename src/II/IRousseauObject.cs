@@ -144,6 +144,10 @@ namespace PPWCode.Vernacular.Semantics.II
 
         public abstract bool IsSerialized { get; }
 
+        public abstract override bool Equals(object other);
+
+        public abstract override int GetHashCode();
+
 #pragma warning disable
 
         public event PropertyChangedEventHandler PropertyChanged;
