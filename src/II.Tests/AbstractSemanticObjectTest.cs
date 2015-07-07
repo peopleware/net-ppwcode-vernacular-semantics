@@ -21,7 +21,7 @@ using NUnit.Framework;
 
 using PPWCode.Vernacular.Semantics.II;
 
-namespace PPWCode.Vernacular.Semantics.II.Test
+namespace PPWCode.Vernacular.Semantics.II.Tests
 {
     [TestFixture]
     public class AbstractSemanticObjectTest
