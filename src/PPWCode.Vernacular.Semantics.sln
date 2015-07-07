@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A67612
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPWCode.Vernacular.Semantics.II.Test", "II.Test\PPWCode.Vernacular.Semantics.II.Test.csproj", "{7200287D-1E31-4C53-B24F-602A35614B6A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PPWCode.Vernacular.Semantics.II.Tests", "II.Tests\PPWCode.Vernacular.Semantics.II.Tests.csproj", "{7200287D-1E31-4C53-B24F-602A35614B6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

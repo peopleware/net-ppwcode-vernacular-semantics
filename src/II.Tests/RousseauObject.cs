@@ -14,7 +14,7 @@
 
 using System.Diagnostics.Contracts;
 
-using PPWCode.Vernacular.Exception.II;
+using PPWCode.Vernacular.Exceptions.II;
 using PPWCode.Vernacular.Semantics.II;
 
 namespace PPWCode.Vernacular.Semantics.II.Test
