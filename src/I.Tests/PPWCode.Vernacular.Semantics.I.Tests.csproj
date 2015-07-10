@@ -5,13 +5,14 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{DC2E40D4-0756-41CC-A77E-A03806991238}</ProjectGuid>
+    <ProjectGuid>{7200287D-1E31-4C53-B24F-602A35614B6A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PPWCode.Vernacular.Semantics.I</RootNamespace>
-    <AssemblyName>PPWcode.Vernacular.Semantics.I</AssemblyName>
+    <RootNamespace>PPWCode.Vernacular.Semantics.I.Tests</RootNamespace>
+    <AssemblyName>PPWCode.Vernacular.Semantics.I.Tests</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -21,8 +22,6 @@
     <DefineConstants>TRACE;DEBUG;CONTRACTS_FULL</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <NoWarn>1591,1592,1573,1571,1570,1572</NoWarn>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
     <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
     <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
@@ -42,28 +41,28 @@
     </CodeContractsCustomRewriterClass>
     <CodeContractsLibPaths>
     </CodeContractsLibPaths>
-    <CodeContractsPlatformPath>
-    </CodeContractsPlatformPath>
+    <CodeContractsExtraRewriteOptions>
+    </CodeContractsExtraRewriteOptions>
     <CodeContractsExtraAnalysisOptions>
     </CodeContractsExtraAnalysisOptions>
     <CodeContractsBaseLineFile>
     </CodeContractsBaseLineFile>
+    <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
     <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
-    <DocumentationFile>..\..\scratch\bin\$(MSBuildProjectName)-$(Configuration)-$(Platform)\PPWcode.Vernacular.Semantics.I.XML</DocumentationFile>
+    <NoWarn>1591,1592,1573,1571,1570,1572</NoWarn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <DocumentationFile>..\..\scratch\bin\PPWCode.Vernacular.Semantics.I.Test-Debug-AnyCPU\PPWCode.Vernacular.Semantics.I.Test.xml</DocumentationFile>
     <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
     <CodeContractsEnumObligations>False</CodeContractsEnumObligations>
-    <CodeContractsMissingPublicRequiresAsWarnings>True</CodeContractsMissingPublicRequiresAsWarnings>
-    <CodeContractsInferRequires>True</CodeContractsInferRequires>
+    <CodeContractsInferRequires>False</CodeContractsInferRequires>
     <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
     <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
     <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
     <CodeContractsSuggestRequires>True</CodeContractsSuggestRequires>
+    <CodeContractsSuggestEnsures>False</CodeContractsSuggestEnsures>
     <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
-    <CodeContractsExtraRewriteOptions />
-    <CodeContractsSQLServerOption />
-    <CodeContractsCacheAnalysisResults>True</CodeContractsCacheAnalysisResults>
-    <CodeContractsFailBuildOnWarnings>False</CodeContractsFailBuildOnWarnings>
     <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -91,40 +90,36 @@
     </CodeContractsCustomRewriterClass>
     <CodeContractsLibPaths>
     </CodeContractsLibPaths>
-    <CodeContractsPlatformPath>
-    </CodeContractsPlatformPath>
+    <CodeContractsExtraRewriteOptions>
+    </CodeContractsExtraRewriteOptions>
     <CodeContractsExtraAnalysisOptions>
     </CodeContractsExtraAnalysisOptions>
     <CodeContractsBaseLineFile>
     </CodeContractsBaseLineFile>
+    <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
     <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
     <CodeContractsReferenceAssembly>Build</CodeContractsReferenceAssembly>
     <NoWarn>1591,1592,1573,1571,1570,1572</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>..\..\scratch\bin\$(MSBuildProjectName)-$(Configuration)-$(Platform)\PPWcode.Vernacular.Semantics.I.XML</DocumentationFile>
+    <DocumentationFile>..\..\scratch\bin\PPWCode.Vernacular.Semantics.II.Test-Release-AnyCPU\PPWCode.Vernacular.Semantics.I.Test.xml</DocumentationFile>
     <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
     <CodeContractsEnumObligations>False</CodeContractsEnumObligations>
-    <CodeContractsMissingPublicRequiresAsWarnings>True</CodeContractsMissingPublicRequiresAsWarnings>
-    <CodeContractsInferRequires>True</CodeContractsInferRequires>
+    <CodeContractsInferRequires>False</CodeContractsInferRequires>
     <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
     <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
     <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
     <CodeContractsSuggestRequires>True</CodeContractsSuggestRequires>
+    <CodeContractsSuggestEnsures>False</CodeContractsSuggestEnsures>
     <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
-    <CodeContractsExtraRewriteOptions />
-    <CodeContractsSQLServerOption />
-    <CodeContractsCacheAnalysisResults>True</CodeContractsCacheAnalysisResults>
-    <CodeContractsFailBuildOnWarnings>False</CodeContractsFailBuildOnWarnings>
     <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <OutputPath Condition="'$(OutputPath)' == ''">..\..\scratch\bin\$(MSBuildProjectName)-$(Configuration)-$(Platform)\</OutputPath>
-    <IntermediateOutputPath Condition="'$(IntermediateOutputPath)' == ''">..\..\scratch\obj\$(MSBuildProjectName)-$(Configuration)-$(Platform)\</IntermediateOutputPath>
+    <CodeContractsMissingPublicRequiresAsWarnings>True</CodeContractsMissingPublicRequiresAsWarnings>
+    <CodeContractsSQLServerOption />
+    <CodeContractsFailBuildOnWarnings>False</CodeContractsFailBuildOnWarnings>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugNoInvariants|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
     <DefineConstants>TRACE;DEBUG;CONTRACTS_FULL;__OW_PLATFORM_AnyCPU__;__OW_PROFILE_net35__;</DefineConstants>
-    <DocumentationFile>..\..\scratch\bin\$(MSBuildProjectName)-$(Configuration)-$(Platform)\PPWcode.Vernacular.Semantics.I.XML</DocumentationFile>
+    <DocumentationFile>..\..\scratch\bin\PPWCode.Vernacular.Semantics.II.Test-DebugNoInvariants-AnyCPU\PPWCode.Vernacular.Semantics.I.Test.xml</DocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <NoWarn>1591,1592,1573,1571,1570,1572</NoWarn>
     <DebugType>full</DebugType>
@@ -174,6 +169,10 @@
     <Reference Include="Microsoft.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=736440c9b414ea16, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Contracts.1.0.3\lib\net35\Microsoft.Contracts.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="PPWCode.Vernacular.Exceptions.I">
       <HintPath>..\packages\PPWCode.Vernacular.Exceptions.I.2.1.0.0\lib\net35\PPWCode.Vernacular.Exceptions.I.dll</HintPath>
     </Reference>
@@ -181,28 +180,32 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Runtime.Serialization">
-      <RequiredTargetFramework>3.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Solution Items\SolutionInfo.cs">
-      <Link>Properties\SolutionInfo.cs</Link>
-    </Compile>
-    <Compile Include="AbstractRousseauObject.cs" />
-    <Compile Include="AbstractSemanticObject.cs" />
-    <Compile Include="IRousseauObject.cs" />
-    <Compile Include="ISemanticObject.cs" />
-    <Compile Include="NamespaceDoc.cs" />
+    <Compile Include="AbstractRousseauObjectTest.cs" />
+    <Compile Include="AbstractSemanticObjectTest.cs" />
+    <Compile Include="RousseauObject.cs" />
+    <Compile Include="SemanticObjectA.cs" />
+    <Compile Include="SemanticObjectB.cs" />
+    <Compile Include="SemanticObjectC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\I\PPWCode.Vernacular.Semantics.I.csproj">
+      <Project>{DC2E40D4-0756-41CC-A77E-A03806991238}</Project>
+      <Name>PPWCode.Vernacular.Semantics.I</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
