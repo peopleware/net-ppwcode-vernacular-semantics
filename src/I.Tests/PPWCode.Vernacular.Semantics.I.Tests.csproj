@@ -8,8 +8,8 @@
     <ProjectGuid>{7200287D-1E31-4C53-B24F-602A35614B6A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PPWCode.Vernacular.Semantics.I.Test</RootNamespace>
-    <AssemblyName>PPWCode.Vernacular.Semantics.I.Test</AssemblyName>
+    <RootNamespace>PPWCode.Vernacular.Semantics.I.Tests</RootNamespace>
+    <AssemblyName>PPWCode.Vernacular.Semantics.I.Tests</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

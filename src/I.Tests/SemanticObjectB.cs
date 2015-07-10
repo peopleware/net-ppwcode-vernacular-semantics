@@ -19,11 +19,9 @@
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 
-using PPWCode.Vernacular.Semantics.I;
-
 #endregion
 
-namespace PPWCode.Vernacular.Semantics.I.Test
+namespace PPWCode.Vernacular.Semantics.I.Tests
 {
     public class SemanticObjectB : AbstractSemanticObject
     {

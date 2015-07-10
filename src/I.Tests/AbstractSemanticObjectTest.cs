@@ -20,14 +20,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
-
 using NUnit.Framework;
-
-using PPWCode.Vernacular.Semantics.I;
 
 #endregion
 
-namespace PPWCode.Vernacular.Semantics.I.Test
+namespace PPWCode.Vernacular.Semantics.I.Tests
 {
     [TestFixture]
     public class AbstractSemanticObjectTest
