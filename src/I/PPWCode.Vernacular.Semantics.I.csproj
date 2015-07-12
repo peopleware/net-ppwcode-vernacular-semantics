@@ -13,6 +13,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
+    <NuGetPackageImportStamp>f1cf20e8</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -174,8 +175,9 @@
     <Reference Include="Microsoft.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=736440c9b414ea16, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Contracts.1.0.3\lib\net35\Microsoft.Contracts.dll</HintPath>
     </Reference>
-    <Reference Include="PPWCode.Vernacular.Exceptions.I">
-      <HintPath>..\packages\PPWCode.Vernacular.Exceptions.I.2.1.0.0\lib\net35\PPWCode.Vernacular.Exceptions.I.dll</HintPath>
+    <Reference Include="PPWCode.Vernacular.Exceptions.I, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PPWCode.Vernacular.Exceptions.I.2.2.1.0\lib\net35\PPWCode.Vernacular.Exceptions.I.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
