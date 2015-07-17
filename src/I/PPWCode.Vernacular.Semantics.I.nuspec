@@ -27,7 +27,7 @@
     <tags>PPWCode PPWCode.Vernacular PPWCode.Vernacular.Semantics</tags>
     
     <dependencies>
-      <dependency id="PPWCode.Vernacular.Exceptions.I" version="3.0.0" />
+      <dependency id="PPWCode.Vernacular.Exceptions.I" version="[3,4)" />
     </dependencies>
     
     <references>
