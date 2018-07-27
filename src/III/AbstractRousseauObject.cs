@@ -1,11 +1,8 @@
-﻿// Copyright 2014 by PeopleWare n.v..
-// 
+﻿// Copyright 2018 by PeopleWare n.v..
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
 // http://www.apache.org/licenses/LICENSE-2.0
-// 
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -13,23 +10,22 @@
 // limitations under the License.
 
 using System;
-using System.Diagnostics.Contracts;
 using System.Runtime.Serialization;
 
 using PPWCode.Vernacular.Exceptions.II;
 
-namespace PPWCode.Vernacular.Semantics.II
+namespace PPWCode.Vernacular.Semantics.III
 {
     /// <summary>
     ///     Abstract class that supports things
     ///     required by <see cref="IRousseauObject" />.
     /// </summary>
-    [Serializable, DataContract(IsReference = true)]
-    public class AbstractRousseauObject :
-        AbstractSemanticObject,
-        IRousseauObject
+    [Serializable]
+    [DataContract(IsReference = true)]
+    public class AbstractRousseauObject
+        : AbstractSemanticObject,
+          IRousseauObject
     {
-        [Pure]
         public bool IsCivilized()
         {
             return WildExceptions().IsEmpty;
@@ -63,7 +59,6 @@ namespace PPWCode.Vernacular.Semantics.II
         /// }
         /// </code>
         /// </remarks>
-        [Pure]
         public virtual CompoundSemanticException WildExceptions()
         {
             return new CompoundSemanticException();
@@ -72,12 +67,10 @@ namespace PPWCode.Vernacular.Semantics.II
         /// <summary>
         ///     <inheritdoc cref="IRousseauObject.ThrowIfNotCivilized" />
         /// </summary>
-        [Pure]
         public void ThrowIfNotCivilized()
         {
             CompoundSemanticException cse = WildExceptions();
-
-            if (cse != null && !cse.IsEmpty)
+            if (!cse.IsEmpty)
             {
                 cse.Closed = true;
                 throw cse;

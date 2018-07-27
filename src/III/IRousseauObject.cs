@@ -1,23 +1,19 @@
-﻿// Copyright 2014 by PeopleWare n.v..
-// 
+﻿// Copyright 2018 by PeopleWare n.v..
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
 // http://www.apache.org/licenses/LICENSE-2.0
-// 
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using System.ComponentModel;
-using System.Diagnostics.Contracts;
+using JetBrains.Annotations;
 
 using PPWCode.Vernacular.Exceptions.II;
 
-namespace PPWCode.Vernacular.Semantics.II
+namespace PPWCode.Vernacular.Semantics.III
 {
     /// <summary>
     ///     A type that formalizes how to work with objects that represent
@@ -67,9 +63,7 @@ namespace PPWCode.Vernacular.Semantics.II
     ///         the compiler, it can be seen as a tagging interface.
     ///     </para>
     /// </remarks>
-    [ContractClass(typeof(IRousseauObjectContracts))]
-    public interface IRousseauObject :
-        ISemanticObject
+    public interface IRousseauObject : ISemanticObject
     {
         /// <summary>
         ///     A call to <see cref="WildExceptions" />
@@ -80,7 +74,6 @@ namespace PPWCode.Vernacular.Semantics.II
         ///     A boolean indicating whether this object is
         ///     civilized.
         /// </returns>
-        [Pure]
         bool IsCivilized();
 
         /// <summary>
@@ -101,7 +94,7 @@ namespace PPWCode.Vernacular.Semantics.II
         ///         rules for this type are.
         ///     </para>
         /// </returns>
-        [Pure]
+        [NotNull]
         CompoundSemanticException WildExceptions();
 
         /// <summary>
@@ -121,56 +114,5 @@ namespace PPWCode.Vernacular.Semantics.II
         ///     </para>
         /// </remarks>
         void ThrowIfNotCivilized();
-    }
-
-    /// <summary>
-    ///     Contract class for <see cref="IRousseauObject" /> interface.
-    /// </summary>
-    /// <exclude />
-    [ContractClassFor(typeof(IRousseauObject))]
-    // ReSharper disable once InconsistentNaming
-    public abstract class IRousseauObjectContracts :
-        IRousseauObject
-    {
-        [Pure]
-        public bool IsCivilized()
-        {
-            Contract.Ensures(Contract.Result<bool>() == WildExceptions().IsEmpty);
-
-            return default(bool);
-        }
-
-        [Pure]
-        public CompoundSemanticException WildExceptions()
-        {
-            Contract.Ensures(Contract.Result<CompoundSemanticException>() != null);
-            Contract.Ensures(!Contract.Result<CompoundSemanticException>().Closed);
-
-            return default(CompoundSemanticException);
-        }
-
-        public void ThrowIfNotCivilized()
-        {
-            Contract.Ensures(
-                IsCivilized(),
-                "Method must end nominally if this is civilized, " +
-                "and is not allowed to end nominally if this is not.");
-            Contract.EnsuresOnThrow<CompoundSemanticException>(
-                !IsCivilized(),
-                "If this method throws a CompoundSemanticException, this" +
-                "was and is not civilized.");
-        }
-
-        public abstract bool IsSerialized { get; }
-
-        public abstract override bool Equals(object other);
-
-        public abstract override int GetHashCode();
-
-#pragma warning disable
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-#pragma warning restore
     }
 }

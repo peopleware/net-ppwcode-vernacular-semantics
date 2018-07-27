@@ -1,11 +1,8 @@
-﻿// Copyright 2014 by PeopleWare n.v..
-// 
+﻿// Copyright 2018 by PeopleWare n.v..
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
 // http://www.apache.org/licenses/LICENSE-2.0
-// 
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -13,9 +10,10 @@
 // limitations under the License.
 
 using System.ComponentModel;
-using System.Diagnostics.Contracts;
 
-namespace PPWCode.Vernacular.Semantics.II
+using JetBrains.Annotations;
+
+namespace PPWCode.Vernacular.Semantics.III
 {
     /// <summary>
     ///     A type that formalizes how to work with objects that represent real-world objects
@@ -63,10 +61,13 @@ namespace PPWCode.Vernacular.Semantics.II
     ///         the compiler, it can be seen as a tagging interface.
     ///     </para>
     /// </remarks>
-    [ContractClass(typeof(ISemanticObjectContracts))]
-    public interface ISemanticObject :
-        INotifyPropertyChanged
+    public interface ISemanticObject : INotifyPropertyChanged
     {
+        /// <summary>
+        ///     Indicates whether this object went through a serialization-deserialization cycle.
+        /// </summary>
+        bool IsSerialized { get; }
+
         /// <summary>
         ///     Override to make sealed.
         /// </summary>
@@ -75,14 +76,12 @@ namespace PPWCode.Vernacular.Semantics.II
         ///     A boolean indicating whether this object
         ///     is equal to the <paramref name="other" /> object.
         /// </returns>
-        [Pure]
         bool Equals(object other);
 
         /// <summary>
         ///     Override to make sealed.
         /// </summary>
         /// <returns>The hash code for this object.</returns>
-        [Pure]
         int GetHashCode();
 
         /// <summary>
@@ -95,44 +94,7 @@ namespace PPWCode.Vernacular.Semantics.II
         ///     You can show the number of elements in an association.
         /// </remarks>
         /// <returns>A string representation of this object.</returns>
-        [Pure]
+        [NotNull]
         string ToString();
-
-        /// <summary>
-        ///     Indicates whether this object went through a serialization-deserialization cycle.
-        /// </summary>
-        [Pure]
-        bool IsSerialized { get; }
-    }
-
-    /// <summary>The Contract class for <see cref="ISemanticObject" />.</summary>
-    /// <exclude />
-    [ContractClassFor(typeof(ISemanticObject))]
-    // ReSharper disable InconsistentNaming
-    public abstract class ISemanticObjectContracts :
-        ISemanticObject
-    {
-        bool ISemanticObject.Equals(object other)
-        {
-            Contract.Ensures(Contract.Result<bool>() == ReferenceEquals(this, other));
-
-            return true;
-        }
-
-        int ISemanticObject.GetHashCode()
-        {
-            return 0;
-        }
-
-        bool ISemanticObject.IsSerialized
-        {
-            get { return default(bool); }
-        }
-
-#pragma warning disable
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-#pragma warning restore
     }
 }

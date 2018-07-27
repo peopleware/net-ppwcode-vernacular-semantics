@@ -112,7 +112,7 @@ function Exec {
 try 
 {
     # execution policy for scripts
-    Set-ExecutionPolicy RemoteSigned
+    # Set-ExecutionPolicy RemoteSigned
 
     # find module, if not found, try to download it
     $modules = Get-Item  .\src\packages\psake.*\tools\psake.psm1

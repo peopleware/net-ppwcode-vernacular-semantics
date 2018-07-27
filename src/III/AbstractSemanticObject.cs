@@ -1,11 +1,8 @@
-﻿// Copyright 2014 by PeopleWare n.v..
-// 
+﻿// Copyright 2018 by PeopleWare n.v..
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-// 
 // http://www.apache.org/licenses/LICENSE-2.0
-// 
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,31 +12,107 @@
 using System;
 using System.Collections;
 using System.ComponentModel;
-using System.Diagnostics.Contracts;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace PPWCode.Vernacular.Semantics.II
+namespace PPWCode.Vernacular.Semantics.III
 {
     /// <summary>
     ///     Abstract class that supports things
     ///     required by <see cref="ISemanticObject" />.
     /// </summary>
-    [Serializable, DataContract(IsReference = true)]
-    public abstract class AbstractSemanticObject :
-        ISemanticObject
+    [Serializable]
+    [DataContract(IsReference = true)]
+    [SuppressMessage("ReSharper", "BaseObjectEqualsIsObjectEquals", Justification = "Reviewed")]
+    public abstract class AbstractSemanticObject : ISemanticObject
     {
+        private bool _isSerialized;
+
+        [SuppressMessage("ReSharper", "VirtualMemberCallInConstructor", Justification = "Reviewed")]
         protected AbstractSemanticObject()
         {
-            // ReSharper disable DoNotCallOverridableMethodsInConstructor
             Initialize(false);
-            // ReSharper restore DoNotCallOverridableMethodsInConstructor
         }
+
+        /// <summary>
+        ///     Is raised whenever a property is changed, part of the INotifyPropertyChanged interface.
+        /// </summary>
+        public virtual event PropertyChangedEventHandler PropertyChanged;
+
+        public sealed override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        [SuppressMessage("ReSharper", "BaseObjectGetHashCodeCallInGetHashCode", Justification = "Reviewed")]
+        public sealed override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder(base.ToString());
+
+            sb.Append("{ ");
+            sb.AppendFormat("HashCode = '{0}'", GetHashCode());
+
+            foreach (PropertyInfo prop in GetType().GetProperties())
+            {
+                sb.AppendFormat(", {0} = ", prop.Name);
+                object value;
+
+                try
+                {
+                    value = prop.GetValue(this, null);
+                }
+                catch (Exception e)
+                {
+                    value = e.GetBaseException().Message;
+                }
+
+                if (value == null)
+                {
+                    sb.Append("[null]");
+                }
+                else if (value is string)
+                {
+                    sb.AppendFormat("'{0}'", value);
+                }
+                else if (value is IEnumerable)
+                {
+                    if (value is ICollection collection)
+                    {
+                        sb.AppendFormat("[{0} elements]", collection.Count);
+                    }
+                    else
+                    {
+                        sb.AppendFormat("[? elements]");
+                    }
+                }
+                else if (value is AbstractSemanticObject o)
+                {
+                    sb.Append(o.LimitedToString());
+                }
+                else
+                {
+                    sb.AppendFormat("'{0}'", value);
+                }
+            }
+
+            sb.Append(" }");
+
+            return sb.ToString();
+        }
+
+        public bool IsSerialized
+            => _isSerialized;
 
         protected virtual void Initialize(bool onDeserializing)
         {
-            m_IsSerialized = onDeserializing;
+            _isSerialized = onDeserializing;
         }
 
         /// <summary>
@@ -48,85 +121,7 @@ namespace PPWCode.Vernacular.Semantics.II
         /// <param name="propertyName">The property name.</param>
         protected virtual void OnPropertyChanged(string propertyName)
         {
-            Contract.Requires(!string.IsNullOrEmpty(propertyName));
-
-            if (PropertyChanged != null)
-            {
-                // ReSharper disable PolymorphicFieldLikeEventInvocation
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-                // ReSharper restore PolymorphicFieldLikeEventInvocation
-            }
-        }
-
-        /// <summary>
-        ///     Is raised whenever a property is changed, part of the INotifyPropertyChanged interface.
-        /// </summary>
-        public virtual event PropertyChangedEventHandler PropertyChanged;
-
-        public override sealed bool Equals(object obj)
-        {
-            return base.Equals(obj);
-        }
-
-        public override sealed int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
-
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder(base.ToString());
-            {
-                sb.Append("{ ");
-                sb.AppendFormat("HashCode = '{0}'", GetHashCode());
-
-                foreach (PropertyInfo prop in GetType().GetProperties())
-                {
-                    sb.AppendFormat(", {0} = ", prop.Name);
-                    object value;
-
-                    try
-                    {
-                        value = prop.GetValue(this, null);
-                    }
-                    catch (Exception e)
-                    {
-                        value = e.GetBaseException().Message;
-                    }
-
-                    if (value == null)
-                    {
-                        sb.Append("[null]");
-                    }
-                    else if (value is string)
-                    {
-                        sb.AppendFormat("'{0}'", value);
-                    }
-                    else if (value is IEnumerable)
-                    {
-                        if (value is ICollection)
-                        {
-                            sb.AppendFormat("[{0} elements]", ((ICollection)value).Count);
-                        }
-                        else
-                        {
-                            sb.AppendFormat("[? elements]");
-                        }
-                    }
-                    else if (value is AbstractSemanticObject)
-                    {
-                        sb.Append(((AbstractSemanticObject)value).LimitedToString());
-                    }
-                    else
-                    {
-                        sb.AppendFormat("'{0}'", value);
-                    }
-                }
-
-                sb.Append(" }");
-            }
-
-            return sb.ToString();
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         /// <summary>
@@ -161,13 +156,6 @@ namespace PPWCode.Vernacular.Semantics.II
             sb.AppendFormat("HashCode = '{0}'", GetHashCode());
             sb.Append(" }");
             return sb.ToString();
-        }
-
-        private bool m_IsSerialized;
-
-        public bool IsSerialized
-        {
-            get { return m_IsSerialized; }
         }
 
         [OnDeserializing]
