@@ -32,8 +32,6 @@ namespace PPWCode.Vernacular.Semantics.III.Tests
         public SemanticObjectA A { get; set; }
 
         public override string LimitedToString()
-        {
-            return "TEST";
-        }
+            => "TEST";
     }
 }

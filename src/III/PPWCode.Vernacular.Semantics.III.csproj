@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <!-- target frameworks -->
-    <TargetFrameworks>net45</TargetFrameworks>
+    <TargetFrameworks>net45;netstandard20</TargetFrameworks>
 
     <!-- nuget package -->
     <IsPackable>true</IsPackable>
@@ -28,7 +28,7 @@
 
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="[2018.2.1,)" />
-    <PackageReference Include="PPWCode.Vernacular.Exceptions.II" Version="[1, 2)" />
+    <PackageReference Include="PPWCode.Vernacular.Exceptions.III" Version="[1, 2)" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta008">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>

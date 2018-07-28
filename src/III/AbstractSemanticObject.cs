@@ -42,15 +42,11 @@ namespace PPWCode.Vernacular.Semantics.III
         public virtual event PropertyChangedEventHandler PropertyChanged;
 
         public sealed override bool Equals(object obj)
-        {
-            return base.Equals(obj);
-        }
+            => base.Equals(obj);
 
         [SuppressMessage("ReSharper", "BaseObjectGetHashCodeCallInGetHashCode", Justification = "Reviewed")]
         public sealed override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
+            => base.GetHashCode();
 
         public override string ToString()
         {
