@@ -66,14 +66,14 @@ Properties {
 function PropertyDocumentation() {
     Write-Host 'Properties'
     Write-Host '----------'
-    Write-Host "`$buildconfig                  Build configuration (Debug, Release), defaults to Debug."
-    Write-Host "`$buildPlatformTarget          Build Target Platform (AnyCpu, x86, x64), defaults to AnyCpu."
     Write-Host "`$chatter                      The level of verbosity during task execution, defaults to 1."
     Write-Host  '                                0 - No output'
     Write-Host  '                                1 - Minimal output, tasks executed'
     Write-Host  '                                2 - Extra output, steps within tasks'
     Write-Host  '                                3 - Even more output, debug execution'
     Write-Host "`$chattercolor                 Foreground color to use for task output., defaults to Green"
+    Write-Host "`$buildconfig                  Build configuration (Debug, Release), defaults to Debug."
+    Write-Host "`$buildPlatformTarget          Build Target Platform (AnyCpu, x86, x64), defaults to AnyCpu."
     Write-Host "`$nunitVersion                 Version of nunit-runner, defaults to 3.8.0"
     Write-Host "`$nunitClrVersion              Clr version for nunit-runner, defaults to 4.0"
 }
@@ -108,7 +108,7 @@ function Test-Administrator
 ###############################################################################
 # Helper to determine our msbuild parameters
 #
-function Get-MsBuildParameters
+function Get-DefaultMsBuildParameters
 {
     Param (
         [Parameter(Mandatory = $true)]
@@ -118,7 +118,10 @@ function Get-MsBuildParameters
         [Array]$tasks,
 
         [Parameter(Mandatory = $true)]
-        [string]$configuration
+        [string]$configuration,
+
+        [Parameter(Mandatory = $false)]
+        [string[]]$additionalParameters
     )
 
     $concatedTasks = ($tasks -join ';')
@@ -131,6 +134,12 @@ function Get-MsBuildParameters
         "/nologo"
         "/p:Configuration=$configuration"
     )
+
+    if ($additionalParameters) {
+        foreach($param in $additionalParameters) {
+            $params += $param
+        }
+    }
 
     $params
 }
@@ -148,15 +157,18 @@ function Invoke-MsBuild
         [Array]$tasks,
 
         [Parameter(Mandatory = $true)]
-        [string]$configuration
+        [string]$configuration,
+
+        [Parameter(Mandatory = $false)]
+        [string[]]$additionalParameters
     )
 
-    $msbuildParams = Get-MsBuildParameters -solution $solution -tasks $tasks -configuration $configuration
+    $msbuildParams = Get-DefaultMsBuildParameters -solution $solution -tasks $tasks -configuration $configuration -additionalParameters $additionalParameters
     Chatter "msbuild $msbuildParams" 3
     Exec { msbuild $msbuildParams }
 }
-#endregion
 
+#endregion
 
 #region TASKS
 
@@ -180,9 +192,20 @@ Task ? -description 'Show help.' {
 }
 
 ###############################################################################
+# Helper to chat our properties
+#
+Task ShowProperties -description 'Show running properties' {
+    Chatter "Properties used:" 1
+    Chatter "  buildconfig=$buildconfig" 1
+    Chatter "  buildPlatformTarget=$buildPlatformTarget" 1
+    Chatter "  nunitVersion=$nunitVersion" 1
+    Chatter "  nunitClrVersion=$nunitClrVersion" 1
+}
+
+###############################################################################
 # Clean ReSharper cache folder
 #
-Task ReSharperClean -description 'Clean ReSharper cache folders.' {
+Task ReSharperClean -description 'Clean ReSharper cache folders.' -depends ShowProperties {
 
     Push-Location
     try
@@ -202,7 +225,7 @@ Task ReSharperClean -description 'Clean ReSharper cache folders.' {
 ###############################################################################
 # Restore packages
 #
-Task PackageRestore -description 'Restore NuGet package dependencies.' {
+Task PackageRestore -description 'Restore NuGet package dependencies.' -depends ShowProperties {
 
     Push-Location
     try
@@ -278,7 +301,7 @@ Task Pack -description 'Create a nuget-package.' -depends Clean {
 ###############################################################################
 # Clean build artifacts and temporary files
 #
-Task Clean -description 'Clean build output.' {
+Task Clean -description 'Clean build output.' -depends ShowProperties {
 
     Push-Location
     try
@@ -329,14 +352,20 @@ Task Test -description 'Run the unit tests using NUnit console test runner.' -de
         $nunitApplicationName = 'nunit3-console.exe'
         $nunitNugetPackageName = 'NUnit.ConsoleRunner'
         $nunitNugetVersionedPackageName = "$nunitNugetPackageName.$($nunitVersion)"
-        $packageNUnitPath = Join-Path -Path (Join-Path -Path '.\src' -ChildPath 'packages') -ChildPath $nunitNugetVersionedPackageName
+        $packageNUnitPath = `
+            Join-Path -Path 'src' -ChildPath 'packages' | `
+            Join-Path -ChildPath $nunitNugetVersionedPackageName
 
+        # Can we find nunit-runner in our traditional packages directory?
         $runner = $null
-        $runnerPath = Join-Path -Path (Join-Path -Path $packageNUnitPath -ChildPath 'tools') -ChildPath $nunitApplicationName
+        $runnerPath = `
+            Join-Path -Path $packageNUnitPath -ChildPath 'tools' | `
+            Join-Path -ChildPath $nunitApplicationName
         if (Test-Path $runnerPath) {
             $runner = Get-Item -Path $runnerPath
         }
 
+        # If we didn't found it, install nunit-runner in our scratch directory
         if ($null -eq $runner) {
             $scratchNUnitPath = Join-Path -Path '.\scratch' -ChildPath 'nunit'
 
@@ -350,12 +379,16 @@ Task Test -description 'Run the unit tests using NUnit console test runner.' -de
             Chatter "nuget install $nugetRestoreParams" 3
             Exec { Invoke-Expression "nuget install $nugetRestoreParams" }
 
-            $runnerPath = Join-Path -Path (Join-Path -Path (Join-Path -Path $scratchNUnitPath -ChildPath $nunitNugetVersionedPackageName) -ChildPath 'tools') -ChildPath $nunitApplicationName
+            $runnerPath = `
+                Join-Path -Path $scratchNUnitPath -ChildPath $nunitNugetVersionedPackageName | `
+                Join-Path -ChildPath 'tools' | `
+                Join-Path -ChildPath $nunitApplicationName
             if (Test-Path $runnerPath) {
                 $runner = Get-Item $runnerPath
             }
         }
 
+        # stop if we don't have a nunit-runner
         if ($null -eq $runner)
         {
             throw 'Cannot find or fetch nunit runner.'
@@ -365,11 +398,11 @@ Task Test -description 'Run the unit tests using NUnit console test runner.' -de
 
         # find unit test dlls
         Chatter 'Searching test projects ...' 3
-        Get-ChildItem -Path '.\scratch\bin' -Filter *Tests.dll -Recurse | ForEach-Object {
+        Get-ChildItem -Path (Join-Path -Path 'scratch' -ChildPath 'bin') -Filter *Tests.dll -Recurse | ForEach-Object {
             # generate folder for test output
             Chatter "  Found test project: $_.Name" 3
 
-            $nunitFolder = New-Item -ItemType Directory -Path (Join-Path "scratch" "nunit") -Force
+            $nunitFolder = New-Item -ItemType Directory -Path (Join-Path -Path "scratch" -ChildPath "nunit") -Force
             $work = Join-Path $nunitFolder $testdll.BaseName
 
             # intialise runner args

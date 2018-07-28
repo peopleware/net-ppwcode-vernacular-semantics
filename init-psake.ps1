@@ -116,9 +116,41 @@ try
     # find module, if not found, try to download it
     $module = $null
 
-    # try to find in chocolatey
-    if (Test-Path $Env:ChocolateyInstall) {
-        $psakeToolsFolder = Join-Path -Path $Env:ChocolateyInstall -ChildPath 'lib\psake\tools\psake'
+    $psakeNugetPackageName = 'psake'
+    $psakeVersion = '4.7.1'
+    $psakeNugetVersionedPackageName = "$psakeNugetPackageName.$($psakeVersion)"
+
+    # Can we find psake in our traditional packages directory?
+    $psakeToolsFolder = `
+        Join-Path -Path 'src' -ChildPath 'packages' | `
+        Join-Path -ChildPath $psakeNugetVersionedPackageName | `
+        Join-Path -ChildPath 'tools' | `
+        Join-Path -ChildPath 'psake'
+    if (Test-Path $psakeToolsFolder) {
+        $modulePath = Join-Path -Path $psakeToolsFolder -ChildPath 'psake.psd1'
+        if (Test-Path $modulePath) {
+            $module = Get-Item $modulePath
+        }
+    }
+
+    # If we didn't found it, install psake in our scratch directory
+    if ($null -eq $module) {
+        $scratchPsakePath = '.\scratch'
+
+        $nugetRestoreParams = @(
+            "$psakeNugetPackageName"
+            "-Version '$($psakeVersion)'"
+            "-OutputDirectory ""$scratchPsakePath"""
+            "-NonInteractive"
+            "-Verbosity quiet"
+        )
+        Exec { Invoke-Expression "nuget install $nugetRestoreParams" }
+
+        $psakeToolsFolder = `
+            Join-Path -Path 'scratch' -ChildPath $psakeNugetVersionedPackageName | `
+            Join-Path -ChildPath 'tools' | `
+            Join-Path -ChildPath 'psake'
+
         if (Test-Path $psakeToolsFolder) {
             $modulePath = Join-Path -Path $psakeToolsFolder -ChildPath 'psake.psd1'
             if (Test-Path $modulePath) {
