@@ -13,10 +13,10 @@
 // limitations under the License.
 
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
-using System.Reflection;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
@@ -76,56 +76,19 @@ namespace PPWCode.Vernacular.Semantics.I
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder(base.ToString());
-            {
-                sb.Append("{ ");
-                sb.AppendFormat("HashCode = '{0}'", GetHashCode());
 
-                foreach (PropertyInfo prop in GetType().GetProperties())
-                {
-                    sb.AppendFormat(", {0} = ", prop.Name);
-                    object value;
-                    try
-                    {
-                        value = prop.GetValue(this, null);
-                    }
-                    catch (Exception e)
-                    {
-                        value = e.GetBaseException().Message;
-                    }
-
-                    if (value == null)
-                    {
-                        sb.Append("[null]");
-                    }
-                    else if (value is string)
-                    {
-                        sb.AppendFormat("'{0}'", value);
-                    }
-                    else if (value is IEnumerable)
-                    {
-                        if (value is ICollection)
-                        {
-                            sb.AppendFormat("[{0} elements]", ((ICollection)value).Count);
-                        }
-                        else
-                        {
-                            sb.AppendFormat("[? elements]");
-                        }
-                    }
-                    else if (value is AbstractSemanticObject)
-                    {
-                        sb.Append(((AbstractSemanticObject)value).LimitedToString());
-                    }
-                    else
-                    {
-                        sb.AppendFormat("'{0}'", value);
-                    }
-                }
-
-                sb.Append(" }");
-            }
+            sb.Append("{ ");
+            sb.Append(string.Join(", ", ReportingProperties().Select(rp => string.Format("{0} = '{1}'", rp.Key, rp.Value))));
+            sb.Append(" }");
 
             return sb.ToString();
+        }
+
+        public virtual IDictionary<string,string> ReportingProperties()
+        {
+            IDictionary<string, string> reportingProperties = new Dictionary<string, string>();
+            reportingProperties.Add("HashCode", GetHashCode().ToString());
+            return reportingProperties;
         }
 
         /// <summary>
