@@ -11,7 +11,7 @@
 
 using NUnit.Framework;
 
-using PPWCode.Vernacular.Exceptions.III;
+using PPWCode.Vernacular.Exceptions.IV;
 
 namespace PPWCode.Vernacular.Semantics.III.Tests
 {
