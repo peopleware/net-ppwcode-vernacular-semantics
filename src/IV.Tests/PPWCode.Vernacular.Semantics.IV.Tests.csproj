@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\III\PPWCode.Vernacular.Semantics.III.csproj" />
+    <ProjectReference Include="..\IV\PPWCode.Vernacular.Semantics.IV.csproj" />
   </ItemGroup>
 
 </Project>

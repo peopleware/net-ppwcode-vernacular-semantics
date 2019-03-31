@@ -13,7 +13,7 @@ using JetBrains.Annotations;
 
 using PPWCode.Vernacular.Exceptions.IV;
 
-namespace PPWCode.Vernacular.Semantics.III
+namespace PPWCode.Vernacular.Semantics.IV
 {
     /// <summary>
     ///     A type that formalizes how to work with objects that represent

@@ -15,7 +15,7 @@ using System.Diagnostics;
 
 using NUnit.Framework;
 
-namespace PPWCode.Vernacular.Semantics.III.Tests
+namespace PPWCode.Vernacular.Semantics.IV.Tests
 {
     [TestFixture]
     public class AbstractSemanticObjectTest

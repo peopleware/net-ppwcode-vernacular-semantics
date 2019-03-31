@@ -9,29 +9,30 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace PPWCode.Vernacular.Semantics.III.Tests
-{
-    public class SemanticObjectC : AbstractSemanticObject
-    {
-        private SemanticObjectB _semanticObjectB;
+using System.Diagnostics.Contracts;
 
-        public SemanticObjectB B
+using PPWCode.Vernacular.Exceptions.IV;
+
+namespace PPWCode.Vernacular.Semantics.IV.Tests
+{
+    public class RousseauObject : AbstractRousseauObject
+    {
+        public bool MockWild { get; set; }
+
+        [ContractInvariantMethod]
+        private void TypeInvariants()
         {
-            get => _semanticObjectB;
-            set
-            {
-                _semanticObjectB?.RemoveC(this);
-                _semanticObjectB = value;
-                _semanticObjectB?.AddC(this);
-            }
         }
 
-        /// <summary>
-        ///     Closing the loop.
-        /// </summary>
-        public SemanticObjectA A { get; set; }
+        public override CompoundSemanticException WildExceptions()
+        {
+            CompoundSemanticException cpe = base.WildExceptions();
+            if (MockWild)
+            {
+                cpe.AddElement(new SemanticException("TEST"));
+            }
 
-        public override string LimitedToString()
-            => "TEST";
+            return cpe;
+        }
     }
 }

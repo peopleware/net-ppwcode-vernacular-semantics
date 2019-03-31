@@ -14,7 +14,7 @@ using System.Runtime.Serialization;
 
 using PPWCode.Vernacular.Exceptions.IV;
 
-namespace PPWCode.Vernacular.Semantics.III
+namespace PPWCode.Vernacular.Semantics.IV
 {
     /// <summary>
     ///     Abstract class that supports things

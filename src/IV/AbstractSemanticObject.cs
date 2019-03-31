@@ -17,7 +17,7 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace PPWCode.Vernacular.Semantics.III
+namespace PPWCode.Vernacular.Semantics.IV
 {
     /// <summary>
     ///     Abstract class that supports things

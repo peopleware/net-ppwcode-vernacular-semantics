@@ -13,7 +13,7 @@ using NUnit.Framework;
 
 using PPWCode.Vernacular.Exceptions.IV;
 
-namespace PPWCode.Vernacular.Semantics.III.Tests
+namespace PPWCode.Vernacular.Semantics.IV.Tests
 {
     [TestFixture]
     public class AbstractRousseauObjectTest

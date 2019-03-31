@@ -13,7 +13,7 @@ using System.ComponentModel;
 
 using JetBrains.Annotations;
 
-namespace PPWCode.Vernacular.Semantics.III
+namespace PPWCode.Vernacular.Semantics.IV
 {
     /// <summary>
     ///     A type that formalizes how to work with objects that represent real-world objects

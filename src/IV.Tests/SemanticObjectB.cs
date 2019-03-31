@@ -11,7 +11,7 @@
 
 using System.Collections.Generic;
 
-namespace PPWCode.Vernacular.Semantics.III.Tests
+namespace PPWCode.Vernacular.Semantics.IV.Tests
 {
     public class SemanticObjectB : AbstractSemanticObject
     {
