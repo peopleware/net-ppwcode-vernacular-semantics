@@ -29,20 +29,20 @@
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
 
     <!-- nuget package -->
-    <Description>The PPWCode Vernacular Semantics library version III.</Description>
+    <Description>The PPWCode Vernacular Semantics library version IV.</Description>
     <Product>PPWCode</Product>
     <Authors>dvdwouwe;rvdginste</Authors>
     <Company>Peopleware NV</Company>
-    <Copyright>Copyright © Peopleware NV 2014-2018</Copyright>
+    <Copyright>Copyright © Peopleware NV 2014-2019</Copyright>
 
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/peopleware/net-ppwcode-vernacular-semantics.git</RepositoryUrl>
+    <RepositoryUrl>https://bitbucket.org/ppwcode/dotnet-vernacular-semantics.git</RepositoryUrl>
 
-    <PackageTags>ppwcode vernacular semantics</PackageTags>
-    <PackageProjectUrl>https://github.com/peopleware/net-ppwcode-vernacular-semantics</PackageProjectUrl>
+    <PackageTags>ppwcode vernacular semantics dotnetcore netcore</PackageTags>
+    <PackageProjectUrl>https://bitbucket.org/ppwcode/dotnet-vernacular-semantics</PackageProjectUrl>
     <PackageIconUrl>http://peopleware.github.io/net-ppwcode-util-oddsandends/ppwcode_logo.jpg</PackageIconUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageLicenseUrl>http://opensource.org/licenses/Apache-2.0</PackageLicenseUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
 
     <PackageReleaseNotes>
       <![CDATA[
