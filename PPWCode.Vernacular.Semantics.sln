@@ -5,25 +5,33 @@ VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{788185DD-7404-47DF-AFF3-698298A6F934}"
 	ProjectSection(SolutionItems) = preProject
-		Directory.Build.props = Directory.Build.props
-		version.props = version.props
+		Directory.Build.props = src\Directory.Build.props
+		version.props = src\version.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "psake", "psake", "{90949B3E-8AD7-4771-856E-47D86A5FAD33}"
 	ProjectSection(SolutionItems) = preProject
-		..\init-psake.ps1 = ..\init-psake.ps1
-		..\psakefile.ps1 = ..\psakefile.ps1
+		init-psake.ps1 = init-psake.ps1
+		psakefile.ps1 = psakefile.ps1
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PPWCode.Vernacular.Semantics.IV", "IV\PPWCode.Vernacular.Semantics.IV.csproj", "{DC2E40D4-0756-41CC-A77E-A03806991238}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PPWCode.Vernacular.Semantics.IV", "src\IV\PPWCode.Vernacular.Semantics.IV.csproj", "{DC2E40D4-0756-41CC-A77E-A03806991238}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PPWCode.Vernacular.Semantics.IV.Tests", "IV.Tests\PPWCode.Vernacular.Semantics.IV.Tests.csproj", "{7200287D-1E31-4C53-B24F-602A35614B6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PPWCode.Vernacular.Semantics.IV.Tests", "src\IV.Tests\PPWCode.Vernacular.Semantics.IV.Tests.csproj", "{7200287D-1E31-4C53-B24F-602A35614B6A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StyleCop", "StyleCop", "{128DD115-0091-4987-9821-BE90AEF3CCB5}"
 	ProjectSection(SolutionItems) = preProject
-		StyleCop-Tests.ruleset = StyleCop-Tests.ruleset
-		StyleCop.ruleset = StyleCop.ruleset
+		StyleCop-Tests.ruleset = src\StyleCop-Tests.ruleset
+		StyleCop.ruleset = src\StyleCop.ruleset
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Package", "Package", "{CCC62BA9-3124-4FBB-99B7-A8B6F339D74D}"
+ProjectSection(SolutionItems) = preProject
+	LICENSE = LICENSE
+	NOTICE = NOTICE
+	README.md = README.md
+	assets\ppwcode_logo.jpg = assets\ppwcode_logo.jpg
+EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
