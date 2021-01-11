@@ -118,6 +118,18 @@ namespace PPWCode.Vernacular.Semantics.I.Tests
             m_Cs.Remove(c);
         }
 
+        public override IDictionary<string, string> ReportingProperties()
+        {
+            IDictionary<string, string> reportingProperties = base.ReportingProperties();
+
+            reportingProperties.Add("IntProperty", IntProperty.ToString());
+            reportingProperties.Add("StringProperty", StringProperty);
+            reportingProperties.Add("A", A.ToString());
+            reportingProperties.Add("Cs", Cs.Count.ToString());
+
+            return reportingProperties;
+        }
+
         public override string ToString()
         {
             Contract.Ensures(Contract.Result<string>().Contains("IntProperty"));
