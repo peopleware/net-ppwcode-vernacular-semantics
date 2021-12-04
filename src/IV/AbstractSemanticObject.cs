@@ -17,6 +17,8 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 
+#pragma warning disable CA2214
+
 namespace PPWCode.Vernacular.Semantics.IV
 {
     /// <summary>
