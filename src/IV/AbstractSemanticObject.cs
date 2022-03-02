@@ -1,4 +1,4 @@
-﻿// Copyright 2019 by PeopleWare n.v..
+﻿// Copyright 2019-2022 by PeopleWare n.v..
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -33,7 +33,7 @@ namespace PPWCode.Vernacular.Semantics.IV
         [SuppressMessage("ReSharper", "VirtualMemberCallInConstructor", Justification = "Reviewed")]
         protected AbstractSemanticObject()
         {
-            Initialize(false);
+            _isSerialized = false;
         }
 
         /// <summary>
@@ -106,11 +106,6 @@ namespace PPWCode.Vernacular.Semantics.IV
         public bool IsSerialized
             => _isSerialized;
 
-        protected virtual void Initialize(bool onDeserializing)
-        {
-            _isSerialized = onDeserializing;
-        }
-
         /// <summary>
         ///     Triggers the <see cref="PropertyChanged" /> event if this event is assigned.
         /// </summary>
@@ -155,9 +150,9 @@ namespace PPWCode.Vernacular.Semantics.IV
         }
 
         [OnDeserializing]
-        private void OnDeserializing(StreamingContext context)
+        protected virtual void OnDeserializing(StreamingContext context)
         {
-            Initialize(true);
+            _isSerialized = true;
         }
     }
 }
