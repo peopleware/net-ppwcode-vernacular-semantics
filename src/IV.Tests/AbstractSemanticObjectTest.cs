@@ -86,11 +86,11 @@ namespace PPWCode.Vernacular.Semantics.IV.Tests
         public void CreateAbstractSemanticObject()
         {
             AbstractSemanticObject result = new SemanticObjectB();
-            Assert.IsNotNull(result);
+            Assert.That(result, Is.Not.Null);
             result = new SemanticObjectA();
-            Assert.IsNotNull(result);
+            Assert.That(result, Is.Not.Null);
             result = new SemanticObjectC();
-            Assert.IsNotNull(result);
+            Assert.That(result, Is.Not.Null);
         }
 
         /// <summary>
@@ -110,13 +110,13 @@ namespace PPWCode.Vernacular.Semantics.IV.Tests
                 foreach (AbstractSemanticObject aso2 in all)
                 {
                     result = aso1.Equals(aso2);
-                    Assert.AreEqual(result, result);
+                    Assert.That(result, Is.EqualTo(result));
                 }
 
                 result = aso1.Equals(null);
             }
 
-            Assert.AreEqual(result, result);
+            Assert.That(result, Is.EqualTo(result));
         }
 
         [Test]
@@ -154,20 +154,20 @@ namespace PPWCode.Vernacular.Semantics.IV.Tests
                         b.IntProperty = i;
                     }
 
-                    Assert.IsNotNull(_delegateMethodeCalled);
-                    Assert.AreEqual(b, _delegateMethodeCalled.Obj);
-                    Assert.IsNotNull(_delegateMethodeCalled.PceArgs);
-                    Assert.AreEqual("IntProperty", _delegateMethodeCalled.PceArgs.PropertyName);
+                    Assert.That(_delegateMethodeCalled, Is.Not.Null);
+                    Assert.That(b, Is.EqualTo(_delegateMethodeCalled.Obj));
+                    Assert.That(_delegateMethodeCalled.PceArgs, Is.Not.Null);
+                    Assert.That("IntProperty", Is.EqualTo(_delegateMethodeCalled.PceArgs.PropertyName));
                     _delegateMethodeCalled = null;
                     foreach (string s in _someStrings)
                     {
                         b.StringProperty = s;
                     }
 
-                    Assert.IsNotNull(_delegateMethodeCalled);
-                    Assert.AreEqual(b, _delegateMethodeCalled.Obj);
-                    Assert.IsNotNull(_delegateMethodeCalled.PceArgs);
-                    Assert.AreEqual("StringProperty", _delegateMethodeCalled.PceArgs.PropertyName);
+                    Assert.That(_delegateMethodeCalled, Is.Not.Null);
+                    Assert.That(b, Is.EqualTo(_delegateMethodeCalled.Obj));
+                    Assert.That(_delegateMethodeCalled.PceArgs, Is.Not.Null);
+                    Assert.That("StringProperty", Is.EqualTo(_delegateMethodeCalled.PceArgs.PropertyName));
                 }
             }
         }
