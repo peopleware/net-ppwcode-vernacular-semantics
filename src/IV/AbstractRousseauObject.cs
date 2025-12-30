@@ -1,4 +1,4 @@
-﻿// Copyright 2019 by PeopleWare n.v..
+﻿// Copyright 2025 by PeopleWare n.v..
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -9,8 +9,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#if NETSTANDARD2_0 || NET462_OR_GREATER
 using System;
 using System.Runtime.Serialization;
+#endif
 
 using PPWCode.Vernacular.Exceptions.IV;
 
@@ -20,8 +22,10 @@ namespace PPWCode.Vernacular.Semantics.IV
     ///     Abstract class that supports things
     ///     required by <see cref="IRousseauObject" />.
     /// </summary>
+#if NETSTANDARD2_0 || NET462_OR_GREATER
     [Serializable]
     [DataContract(IsReference = true)]
+#endif
     public class AbstractRousseauObject
         : AbstractSemanticObject,
           IRousseauObject

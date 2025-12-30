@@ -1,18 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <!-- target frameworks -->
-    <TargetFrameworks>netstandard2.0;net60;net80</TargetFrameworks>
-
-    <!-- nuget package -->
-    <IsPackable>true</IsPackable>
-
-    <!-- Stylecop -->
-    <CodeAnalysisRuleSet>..\StyleCop.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-
+  <Import Project="..\common.props" />
+  
   <ItemGroup>
-    <PackageReference Include="PPWCode.Vernacular.Exceptions.IV" Version="1.*" />
+    <PackageReference Include="PPWCode.Vernacular.Exceptions.IV" />
   </ItemGroup>
 
 </Project>

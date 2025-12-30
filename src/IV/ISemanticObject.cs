@@ -1,4 +1,4 @@
-﻿// Copyright 2019 by PeopleWare n.v..
+﻿// Copyright 2025 by PeopleWare n.v..
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -63,10 +63,12 @@ namespace PPWCode.Vernacular.Semantics.IV
     /// </remarks>
     public interface ISemanticObject : INotifyPropertyChanged
     {
+#if NETSTANDARD2_0 || NET462_OR_GREATER
         /// <summary>
         ///     Indicates whether this object went through a serialization-deserialization cycle.
         /// </summary>
         bool IsSerialized { get; }
+#endif
 
         /// <summary>
         ///     Override to make sealed.

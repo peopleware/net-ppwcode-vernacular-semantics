@@ -1,4 +1,4 @@
-﻿// Copyright 2019 by PeopleWare n.v..
+﻿// Copyright 2025 by PeopleWare n.v..
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -12,6 +12,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 using NUnit.Framework;
 
@@ -97,6 +98,10 @@ namespace PPWCode.Vernacular.Semantics.IV.Tests
         ///     A test for the Equals method.
         /// </summary>
         [Test]
+        [SuppressMessage(
+            "Assertion",
+            "NUnit2009:The same value has been provided as both the actual and the expected argument",
+            Justification = "Reviewed")]
         public void EqualsTest()
         {
             List<AbstractSemanticObject> all = new List<AbstractSemanticObject>(BuildBs());
@@ -129,6 +134,7 @@ namespace PPWCode.Vernacular.Semantics.IV.Tests
             }
         }
 
+#if NETSTANDARD2_0 || NET462_OR_GREATER
         [Test]
         public void IsSerializedTest()
         {
@@ -138,6 +144,7 @@ namespace PPWCode.Vernacular.Semantics.IV.Tests
                 bool result = so.IsSerialized;
             }
         }
+#endif
 
         [Test]
         public void OnPropertyChangedTest()
@@ -155,9 +162,9 @@ namespace PPWCode.Vernacular.Semantics.IV.Tests
                     }
 
                     Assert.That(_delegateMethodeCalled, Is.Not.Null);
-                    Assert.That(b, Is.EqualTo(_delegateMethodeCalled.Obj));
+                    Assert.That(_delegateMethodeCalled.Obj, Is.EqualTo(b));
                     Assert.That(_delegateMethodeCalled.PceArgs, Is.Not.Null);
-                    Assert.That("IntProperty", Is.EqualTo(_delegateMethodeCalled.PceArgs.PropertyName));
+                    Assert.That(_delegateMethodeCalled.PceArgs.PropertyName, Is.EqualTo("IntProperty"));
                     _delegateMethodeCalled = null;
                     foreach (string s in _someStrings)
                     {
@@ -165,9 +172,9 @@ namespace PPWCode.Vernacular.Semantics.IV.Tests
                     }
 
                     Assert.That(_delegateMethodeCalled, Is.Not.Null);
-                    Assert.That(b, Is.EqualTo(_delegateMethodeCalled.Obj));
+                    Assert.That(_delegateMethodeCalled.Obj, Is.EqualTo(b));
                     Assert.That(_delegateMethodeCalled.PceArgs, Is.Not.Null);
-                    Assert.That("StringProperty", Is.EqualTo(_delegateMethodeCalled.PceArgs.PropertyName));
+                    Assert.That(_delegateMethodeCalled.PceArgs.PropertyName, Is.EqualTo("StringProperty"));
                 }
             }
         }

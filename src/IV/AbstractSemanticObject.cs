@@ -1,4 +1,4 @@
-﻿// Copyright 2019-2022 by PeopleWare n.v..
+﻿// Copyright 2025 by PeopleWare n.v..
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -14,8 +14,10 @@ using System.Collections;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
-using System.Runtime.Serialization;
 using System.Text;
+#if NETSTANDARD2_0 || NET462_OR_GREATER
+using System.Runtime.Serialization;
+#endif
 
 namespace PPWCode.Vernacular.Semantics.IV
 {
@@ -23,17 +25,23 @@ namespace PPWCode.Vernacular.Semantics.IV
     ///     Abstract class that supports things
     ///     required by <see cref="ISemanticObject" />.
     /// </summary>
+#if NETSTANDARD2_0 || NET462_OR_GREATER
     [Serializable]
     [DataContract(IsReference = true)]
+#endif
     [SuppressMessage("ReSharper", "BaseObjectEqualsIsObjectEquals", Justification = "Reviewed")]
     public abstract class AbstractSemanticObject : ISemanticObject
     {
+#if NETSTANDARD2_0 || NET462_OR_GREATER
         private bool _isSerialized;
+#endif
 
         [SuppressMessage("ReSharper", "VirtualMemberCallInConstructor", Justification = "Reviewed")]
         protected AbstractSemanticObject()
         {
+#if NETSTANDARD2_0 || NET462_OR_GREATER
             _isSerialized = false;
+#endif
         }
 
         /// <summary>
@@ -103,8 +111,10 @@ namespace PPWCode.Vernacular.Semantics.IV
             return sb.ToString();
         }
 
+#if NETSTANDARD2_0 || NET462_OR_GREATER
         public bool IsSerialized
             => _isSerialized;
+#endif
 
         /// <summary>
         ///     Triggers the <see cref="PropertyChanged" /> event if this event is assigned.
@@ -149,10 +159,12 @@ namespace PPWCode.Vernacular.Semantics.IV
             return sb.ToString();
         }
 
+#if NETSTANDARD2_0 || NET462_OR_GREATER
         [OnDeserializing]
         protected virtual void OnDeserializing(StreamingContext context)
         {
             _isSerialized = true;
         }
+#endif
     }
 }
