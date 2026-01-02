@@ -17,7 +17,7 @@ namespace PPWCode.Vernacular.Semantics.IV
 {
     /// <summary>
     ///     A type that formalizes how to work with objects that represent
-    ///     real-world objects during only a part of there life cycle.
+    ///     real-world objects during only a part of their life cycle.
     /// </summary>
     /// <remarks>
     ///     <a href="http://en.wikipedia.org/wiki/Jean-Jacques_Rousseau">
