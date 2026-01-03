@@ -11,8 +11,8 @@
 
 #if NETSTANDARD2_0 || NET462_OR_GREATER
 using System;
-using System.Runtime.Serialization;
 #endif
+using System.Runtime.Serialization;
 
 using PPWCode.Vernacular.Exceptions.IV;
 
@@ -24,8 +24,8 @@ namespace PPWCode.Vernacular.Semantics.IV
     /// </summary>
 #if NETSTANDARD2_0 || NET462_OR_GREATER
     [Serializable]
-    [DataContract(IsReference = true)]
 #endif
+    [DataContract(IsReference = true)]
     public class AbstractRousseauObject
         : AbstractSemanticObject,
           IRousseauObject

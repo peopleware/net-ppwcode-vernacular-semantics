@@ -14,10 +14,8 @@ using System.Collections;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
-using System.Text;
-#if NETSTANDARD2_0 || NET462_OR_GREATER
 using System.Runtime.Serialization;
-#endif
+using System.Text;
 
 namespace PPWCode.Vernacular.Semantics.IV
 {
@@ -27,8 +25,8 @@ namespace PPWCode.Vernacular.Semantics.IV
     /// </summary>
 #if NETSTANDARD2_0 || NET462_OR_GREATER
     [Serializable]
-    [DataContract(IsReference = true)]
 #endif
+    [DataContract(IsReference = true)]
     [SuppressMessage("ReSharper", "BaseObjectEqualsIsObjectEquals", Justification = "Reviewed")]
     public abstract class AbstractSemanticObject : ISemanticObject
     {
