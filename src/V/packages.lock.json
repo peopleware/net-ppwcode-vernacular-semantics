@@ -15,11 +15,8 @@
       "PPWCode.Vernacular.Contracts.I": {
         "type": "Direct",
         "requested": "[1.*, )",
-        "resolved": "1.4.1",
-        "contentHash": "4GlI02Sxovny8zLMbMo3VBVqZDkoVWLSWDSz0hNlpmuy34wRbxFcLWzjyMpx6ps2PXZ35jpPBOMh3+F5VQWyiA==",
-        "dependencies": {
-          "PPWCode.Vernacular.Exceptions.IV": "2.2.1"
-        }
+        "resolved": "1.5.0",
+        "contentHash": "Hv7hjZ+RXEnVkAZEdwlAW5QbT0Hvh+pCusaiQT5bRD93Z58OuMHH6Q48TizzufF6+DRm9rJdnufIcOWWvKLKaw=="
       },
       "PPWCode.Vernacular.Exceptions.V": {
         "type": "Direct",
@@ -45,11 +42,6 @@
         "type": "Transitive",
         "resolved": "10.0.102",
         "contentHash": "Mk1IMb9q5tahC2NltxYXFkLBtuBvfBoCQ3pIxYQWfzbCE9o1OB9SsHe0hnNGo7lWgTA/ePbFAJLWu6nLL9K17A=="
-      },
-      "PPWCode.Vernacular.Exceptions.IV": {
-        "type": "Transitive",
-        "resolved": "2.2.1",
-        "contentHash": "EnSpiADCKJenktPGhgsDAnsSzbf+HTDq52Wkr2F+58/sanx2rb4//Q68SnYEaOKl/AACQBp+FOKuGih0lYYW0A=="
       },
       "StyleCop.Analyzers.Unstable": {
         "type": "Transitive",
@@ -71,11 +63,8 @@
       "PPWCode.Vernacular.Contracts.I": {
         "type": "Direct",
         "requested": "[1.*, )",
-        "resolved": "1.4.1",
-        "contentHash": "4GlI02Sxovny8zLMbMo3VBVqZDkoVWLSWDSz0hNlpmuy34wRbxFcLWzjyMpx6ps2PXZ35jpPBOMh3+F5VQWyiA==",
-        "dependencies": {
-          "PPWCode.Vernacular.Exceptions.IV": "2.2.1"
-        }
+        "resolved": "1.5.0",
+        "contentHash": "Hv7hjZ+RXEnVkAZEdwlAW5QbT0Hvh+pCusaiQT5bRD93Z58OuMHH6Q48TizzufF6+DRm9rJdnufIcOWWvKLKaw=="
       },
       "PPWCode.Vernacular.Exceptions.V": {
         "type": "Direct",
@@ -101,11 +90,6 @@
         "type": "Transitive",
         "resolved": "10.0.102",
         "contentHash": "Mk1IMb9q5tahC2NltxYXFkLBtuBvfBoCQ3pIxYQWfzbCE9o1OB9SsHe0hnNGo7lWgTA/ePbFAJLWu6nLL9K17A=="
-      },
-      "PPWCode.Vernacular.Exceptions.IV": {
-        "type": "Transitive",
-        "resolved": "2.2.1",
-        "contentHash": "EnSpiADCKJenktPGhgsDAnsSzbf+HTDq52Wkr2F+58/sanx2rb4//Q68SnYEaOKl/AACQBp+FOKuGih0lYYW0A=="
       },
       "StyleCop.Analyzers.Unstable": {
         "type": "Transitive",
@@ -127,11 +111,8 @@
       "PPWCode.Vernacular.Contracts.I": {
         "type": "Direct",
         "requested": "[1.*, )",
-        "resolved": "1.4.1",
-        "contentHash": "4GlI02Sxovny8zLMbMo3VBVqZDkoVWLSWDSz0hNlpmuy34wRbxFcLWzjyMpx6ps2PXZ35jpPBOMh3+F5VQWyiA==",
-        "dependencies": {
-          "PPWCode.Vernacular.Exceptions.IV": "2.2.1"
-        }
+        "resolved": "1.5.0",
+        "contentHash": "Hv7hjZ+RXEnVkAZEdwlAW5QbT0Hvh+pCusaiQT5bRD93Z58OuMHH6Q48TizzufF6+DRm9rJdnufIcOWWvKLKaw=="
       },
       "PPWCode.Vernacular.Exceptions.V": {
         "type": "Direct",
@@ -157,11 +138,6 @@
         "type": "Transitive",
         "resolved": "10.0.102",
         "contentHash": "Mk1IMb9q5tahC2NltxYXFkLBtuBvfBoCQ3pIxYQWfzbCE9o1OB9SsHe0hnNGo7lWgTA/ePbFAJLWu6nLL9K17A=="
-      },
-      "PPWCode.Vernacular.Exceptions.IV": {
-        "type": "Transitive",
-        "resolved": "2.2.1",
-        "contentHash": "EnSpiADCKJenktPGhgsDAnsSzbf+HTDq52Wkr2F+58/sanx2rb4//Q68SnYEaOKl/AACQBp+FOKuGih0lYYW0A=="
       },
       "StyleCop.Analyzers.Unstable": {
         "type": "Transitive",
