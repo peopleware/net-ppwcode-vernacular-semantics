@@ -1,11 +1,10 @@
 = About
 
-The library `PPWCode.Vernacular.Semantics.IV` is part of the .NET PPWCode project and defines the semantic vernacular.
+The library `PPWCode.Vernacular.Semantics.V` is part of the .NET PPWCode project and defines the semantic vernacular.
 
-`PPWCode.Vernacular.Semantics.IV` is a helper library that defines a number of base classes and interfaces.  This is generation `IV` of the `PPWCode.Vernacular.Semantics` library.
+`PPWCode.Vernacular.Semantics.V` is a helper library that defines a number of base classes and interfaces.  This is generation `V` of the `PPWCode.Vernacular.Semantics` library.
 
-The library supports both different versions of .NET full framework and more recent (supported) .NET SDKs.
-
+This library is supported on .NET SDK versions that are currently supported by Microsoft as part of their official support lifecycle.
 
 == Development
 
@@ -29,4 +28,3 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
