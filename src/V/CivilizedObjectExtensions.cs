@@ -17,7 +17,16 @@ public static class CivilizedObjectExtensions
 {
     extension(ICivilizedObject? civilizedObject)
     {
+        [Obsolete("Use AddWildExceptionsTo instead")]
         public void CheckForWildExceptions(CompoundSemanticException cse)
+        {
+            if (civilizedObject is not null)
+            {
+                cse.AddElement(civilizedObject.WildExceptions());
+            }
+        }
+
+        public void AddWildExceptionsTo(CompoundSemanticException cse)
         {
             if (civilizedObject is not null)
             {
@@ -28,13 +37,25 @@ public static class CivilizedObjectExtensions
 
     extension(IEnumerable<ICivilizedObject?>? civilizedObjects)
     {
+        [Obsolete("Use AddWildExceptionsTo instead")]
         public void CheckForWildExceptions(CompoundSemanticException cse)
         {
             if (civilizedObjects is not null)
             {
                 foreach (ICivilizedObject? civilizedObject in civilizedObjects)
                 {
-                    civilizedObject.CheckForWildExceptions(cse);
+                    civilizedObject.AddWildExceptionsTo(cse);
+                }
+            }
+        }
+
+        public void AddWildExceptionsTo(CompoundSemanticException cse)
+        {
+            if (civilizedObjects is not null)
+            {
+                foreach (ICivilizedObject? civilizedObject in civilizedObjects)
+                {
+                    civilizedObject.AddWildExceptionsTo(cse);
                 }
             }
         }
