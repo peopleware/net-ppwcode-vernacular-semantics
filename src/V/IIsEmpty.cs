@@ -1,4 +1,4 @@
-﻿// Copyright 2024 by PeopleWare n.v..
+﻿// Copyright 2026 by PeopleWare n.v..
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -12,7 +12,8 @@
 namespace PPWCode.Vernacular.Semantics.V;
 
 /// <summary>
-///     This interface indicates that the class, struct, or record does not contain any functional data
+///     Interface used to indicate whether the class, struct, or record contains functional data.
+///     If the value of the <see cref="IsEmpty" /> property is <c>true</c>,
 /// </summary>
 public interface IIsEmpty
 {
