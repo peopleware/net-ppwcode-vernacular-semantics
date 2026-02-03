@@ -12,6 +12,10 @@ the link to the GitHub tag is only added once we are ready to release.
 :nuget: https://www.nuget.org/packages/PPWCode.Vernacular.Semantics.V/
 :ppwcode-docs: https://peopleware.github.io/net-ppwcode-docs/ppwcode-vernacular-semantics-v/
 
+:github-user: https://github.com/
+:github-pr: https://github.com/peopleware/net-ppwcode-vernacular-semantics/pull/
+:github-issue: https://github.com/peopleware/net-ppwcode-vernacular-semantics/issues/
+
 
 :release: 1.0.0
 == `{release}`
