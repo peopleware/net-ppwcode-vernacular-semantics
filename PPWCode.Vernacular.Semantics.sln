@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-items", "solution-
 		src\common.props = src\common.props
 		src\common-tests.props = src\common-tests.props
 		src\Directory.Packages.props = src\Directory.Packages.props
+		global.json = global.json
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "analyzers", "analyzers", "{128DD115-0091-4987-9821-BE90AEF3CCB5}"
