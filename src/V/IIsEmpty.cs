@@ -15,6 +15,7 @@ namespace PPWCode.Vernacular.Semantics.V;
 ///     Interface used to indicate whether the class, struct, or record contains functional data.
 ///     If the value of the <see cref="IsEmpty" /> property is <c>true</c>,
 /// </summary>
+[Obsolete("Use the new interface IDataContainer")]
 public interface IIsEmpty
 {
     /// <summary>
