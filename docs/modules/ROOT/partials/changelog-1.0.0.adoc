@@ -8,7 +8,13 @@ This file is translated into markdown and used for the release notes in the GitH
 ////
 
 === Changes
-* Initial release of mark V
+* Initial release of mark `V`
 * Supported targets: `.NET 8.0`, `.NET 9.0`, `.NET 10.0`
 * Code built using nullable reference types
 * Use of Microsoft attributes for nullable static analysis
+
+=== Note: changes after prerelease
+The official release has some non-breaking changes added after the library was extracted from `ppwcode-vnext`.  Even though the changes are non-breaking, some things have been marked as `Obsolete`, which will trigger warnings. The `Obsolete` stuff will be removed in the next major release.
+
+* `CivilizedObjectExtensions`: rename `CheckForWildExceptions` in link:{github-pr}5[#5]
+* `IDataContainer` to replace `IIsEmpty` in link:{github-pr}4[#4]
