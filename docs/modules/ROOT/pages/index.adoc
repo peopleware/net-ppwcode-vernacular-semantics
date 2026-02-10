@@ -8,9 +8,9 @@ This library is supported on .NET SDK versions that are currently supported by M
 
 == Development
 
-Development of the PPWCode is done on https://github.com/peopleware/net-ppwcode-vernacular-semantics/tree/IV/next[GitHub].
+Development of the PPWCode is done on https://github.com/peopleware/net-ppwcode-vernacular-semantics/tree/V/next[GitHub].
 
-Releases (both stable and pre-release) are published on https://www.nuget.org/packages/PPWCode.Vernacular.Semantics.IV/[NuGet] by https://www.nuget.org/profiles/PeopleWare[PeopleWare].
+Releases (both stable and pre-release) are published on https://www.nuget.org/packages/PPWCode.Vernacular.Semantics.V/[NuGet] by https://www.nuget.org/profiles/PeopleWare[PeopleWare].
 
 
 == License and Copyright
