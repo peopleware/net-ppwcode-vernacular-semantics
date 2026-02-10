@@ -1,4 +1,4 @@
-﻿// Copyright 2026 by PeopleWare n.v..
+// Copyright 2026 by PeopleWare n.v..
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -12,14 +12,18 @@
 namespace PPWCode.Vernacular.Semantics.V;
 
 /// <summary>
-///     Interface used to indicate whether the class, struct, or record contains functional data.
-///     If the value of the <see cref="IsEmpty" /> property is <c>true</c>,
+///     Interface used to represent an object that may or may not contain meaningful
+///     data.
 /// </summary>
-[Obsolete("Use the new interface IDataContainer")]
-public interface IIsEmpty
+/// <remarks>
+///     This interface is used to model components that are always present in the
+///     system (for example, due to persistence or relational constraints), but
+///     whose underlying data may be absent.
+/// </remarks>
+public interface IDataContainer
 {
     /// <summary>
-    ///     Does this instance contain functional data?
+    ///     Indicates whether the object contains meaningful data.
     /// </summary>
-    bool IsEmpty { get; }
+    bool IsDataPresent { get; }
 }
