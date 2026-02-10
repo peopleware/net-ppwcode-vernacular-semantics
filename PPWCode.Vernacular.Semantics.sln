@@ -14,8 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-items", "solution-
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "analyzers", "analyzers", "{128DD115-0091-4987-9821-BE90AEF3CCB5}"
 	ProjectSection(SolutionItems) = preProject
-		StyleCop-Tests.ruleset = src\StyleCop-Tests.ruleset
-		StyleCop.ruleset = src\StyleCop.ruleset
 		src\Analyzer.ruleset = src\Analyzer.ruleset
 		src\Analyzer-Tests.ruleset = src\Analyzer-Tests.ruleset
 	EndProjectSection
