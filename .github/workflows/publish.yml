@@ -42,14 +42,14 @@ jobs:
         # ContinuousIntegrationBuild=true excludes full-framework
         # builds on Linux and macOS
         run: |
-          dotnet restore PPWCode.Vernacular.Semantics.sln \
+          dotnet restore PPWCode.Vernacular.Semantics.slnx \
             --locked-mode \
             -p:Configuration=Release
 
       - name: Build
         shell: bash
         run: |
-          dotnet build PPWCode.Vernacular.Semantics.sln \
+          dotnet build PPWCode.Vernacular.Semantics.slnx \
             --configuration Release \
             --no-restore \
             -p:ContinuousIntegrationBuild=true
@@ -57,7 +57,7 @@ jobs:
       - name: Test
         shell: bash
         run: |
-          dotnet test PPWCode.Vernacular.Semantics.sln \
+          dotnet test PPWCode.Vernacular.Semantics.slnx \
             --configuration Release \
             --no-build \
             --verbosity normal \
@@ -232,14 +232,14 @@ jobs:
         # ContinuousIntegrationBuild=true excludes full-framework
         # builds on Linux and macOS
         run: |
-          dotnet restore PPWCode.Vernacular.Semantics.sln \
+          dotnet restore PPWCode.Vernacular.Semantics.slnx \
             --locked-mode \
             -p:Configuration=Release
 
       - name: Build
         shell: bash
         run: |
-          dotnet build PPWCode.Vernacular.Semantics.sln \
+          dotnet build PPWCode.Vernacular.Semantics.slnx \
             --configuration Release \
             --no-restore \
             -p:ContinuousIntegrationBuild=true \
@@ -250,7 +250,7 @@ jobs:
       - name: Pack
         shell: bash
         run: |
-          dotnet pack PPWCode.Vernacular.Semantics.sln \
+          dotnet pack PPWCode.Vernacular.Semantics.slnx \
             --configuration Release \
             --no-build \
             --output ./artifacts \
